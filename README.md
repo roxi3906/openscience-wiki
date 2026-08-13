@@ -2,16 +2,18 @@
 
 This repository contains the official operating and reproducibility documentation for [AIPOCH Open Science](https://github.com/aipoch/open-science). The site uses [Docusaurus](https://docusaurus.io/), and AIPOCH.com can sync the current Wiki pages and product screenshots from this repository.
 
-English is the default and only published language. The locale registry remains in place so maintainers can add other overseas languages later without changing the document URLs.
+English is the default language and is served from `/`. Simplified Chinese is available at `/zh-Hans/`. The locale registry and translation layout allow maintainers to add more languages without changing existing document URLs.
 
 ## Content structure
 
 - `docs/` contains the English documentation source.
+- `i18n/<locale>/docusaurus-plugin-content-docs/current/` contains translated documentation with the same file structure as `docs/`.
 - Each `_category_.json` file sets a sidebar section label and description.
 - `static/img/open-science/` contains screenshots captured from a running Open Science installation.
 - `src/pages/` and `src/css/` contain the home page and AIPOCH theme changes.
-- `i18n.config.mjs` defines the default locale.
-- `scripts/check-english.mjs` rejects Chinese characters in repository text files.
+- `i18n.config.mjs` defines the default language and every published locale.
+- `scripts/check-english.mjs` keeps the README and default source content in English.
+- `scripts/check-i18n.mjs` checks document parity and required interface translations.
 
 ## Run locally
 
@@ -22,10 +24,17 @@ npm install
 npm start
 ```
 
-The development server opens [http://localhost:3000](http://localhost:3000). Test the production output before publishing:
+The development server opens [http://localhost:3000](http://localhost:3000). Use a locale-specific development command when you only need one language:
 
 ```bash
-npm run check:english
+npm run start:en
+npm run start:zh
+```
+
+Test all published languages before releasing:
+
+```bash
+npm run check
 npm run build
 npm run serve
 ```
@@ -38,13 +47,13 @@ Add or update a Markdown file under `docs/`, then set its `sidebar_position` in 
 ![Describe the visible application state](/img/open-science/example.png)
 ```
 
-Run `npm run check:english` before committing. The production build runs the same check and stops if Chinese text enters a tracked source file.
+Run `npm run check` before committing. The production build runs the same checks and stops when default source content contains Chinese text, a translated document is missing, or a required interface translation is absent.
 
 ## Add another language
 
 1. Add the Docusaurus locale code, label, HTML language, and direction to `i18n.config.mjs`.
 2. Run `npm run write-translations -- --locale <locale>` to create the shared interface files.
-3. Copy `docs/` to `i18n/<locale>/docusaurus-plugin-content-docs/current/`, keeping every relative path unchanged.
+3. Copy `docs/` to `i18n/<locale>/docusaurus-plugin-content-docs/current/` and keep every relative path unchanged.
 4. Translate the copied documents and interface message values.
 5. Build the site and inspect the new locale locally before publishing.
 

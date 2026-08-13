@@ -5,8 +5,14 @@ const repositoryRoot = process.cwd();
 const ignoredDirectories = new Set([
   '.docusaurus',
   '.git',
+  '.playwright-cli',
   'build',
+  'i18n',
   'node_modules',
+]);
+const allowedFiles = new Set([
+  // Locale names are written in their native language for the language picker.
+  'i18n.config.mjs',
 ]);
 const checkedExtensions = new Set([
   '.css',
@@ -37,6 +43,9 @@ async function inspectDirectory(directory) {
 
     if (!checkedExtensions.has(extname(entry.name))) continue;
 
+    const repositoryPath = relative(repositoryRoot, absolutePath);
+    if (allowedFiles.has(repositoryPath)) continue;
+
     const lines = (await readFile(absolutePath, 'utf8')).split('\n');
     lines.forEach((line, index) => {
       if (hanCharacters.test(line)) {
@@ -49,9 +58,9 @@ async function inspectDirectory(directory) {
 await inspectDirectory(repositoryRoot);
 
 if (failures.length > 0) {
-  console.error('Chinese characters remain in repository text files:');
+  console.error('Chinese characters remain outside translation sources:');
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log('English-only repository check passed.');
+console.log('English-default source check passed.');

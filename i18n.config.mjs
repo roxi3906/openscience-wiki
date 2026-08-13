@@ -6,6 +6,11 @@ export const localeConfigs = {
     htmlLang: 'en',
     direction: 'ltr',
   },
+  'zh-Hans': {
+    label: '简体中文',
+    htmlLang: 'zh-Hans',
+    direction: 'ltr',
+  },
 };
 
 export const locales = Object.keys(localeConfigs);

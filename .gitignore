@@ -6,6 +6,7 @@
 
 # Generated files
 .docusaurus
+.playwright-cli
 .cache-loader
 
 # Misc

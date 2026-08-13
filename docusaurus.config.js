@@ -90,6 +90,10 @@ const config = {
             position: 'left',
           },
           {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/aipoch/open-science',
             label: 'Open Science GitHub',
             position: 'right',
