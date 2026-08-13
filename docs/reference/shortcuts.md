@@ -1,26 +1,25 @@
 ---
 sidebar_position: 3
-title: 键盘与高效操作
+title: Keyboard and efficient operation
 ---
 
-# 键盘与高效操作
+# Keyboard and efficient operation
 
-| 操作 | macOS | Windows/Linux | 位置 |
+| Action | macOS | Windows/Linux | Location |
 | --- | --- | --- | --- |
-| 全局搜索 | `⌘K` | `Ctrl+K` | Home/Workspace |
-| 提示词历史 | `↑` / `↓` | `↑` / `↓` | Composer 为空且光标在开头 |
-| Skill 触发 | 输入 `/` | 输入 `/` | Composer |
-| 文件/artifact 引用 | 输入 `@` | 输入 `@` | Composer |
-| 关闭菜单/对话框 | `Esc` | `Esc` | 大多数 overlay；有未保存表单时按提示 |
-| 发送 | 按界面键位/点击 Send | 同左 | 多行编辑时避免误发送，以按钮为准 |
+| Global search | `⌘K` | `Ctrl+K` | Home/Workspace |
+| Prompt history | `↑` / `↓` | `↑` / `↓` | Composer is empty and the caret is at the start |
+| Skill trigger | Type `/` | Type `/` | Composer |
+| File/artifact reference | Type `@` | Type `@` | Composer |
+| Close menu/dialog | `Esc` | `Esc` | Most overlays; follow the prompt if a form has unsaved changes |
+| Send | Use the displayed shortcut or select Send | Same | Prefer the button while editing multiple lines to prevent accidental submission |
 
-搜索框与列表支持方向键导航和 Enter 选择，具体行为随组件与可用结果变化。Tab/Shift+Tab 可遍历交互控件，Space/Enter 操作开关、单选和按钮。
+Search fields and lists support arrow-key navigation and Enter selection, depending on the component and available results. Tab and Shift+Tab move through interactive controls. Space or Enter operates a focused switch, radio button, or button.
 
-## 高效但安全的工作习惯
+## Fast and safe working habits
 
-1. 先用 `@` 锁定输入文件，再描述任务。
-2. 高成本或会写文件的任务用 `Plan first`。
-3. 默认 `Ask`，稳定重复操作才考虑 Auto-approve edits。
-4. 将 Preview 保持在分栏，边看文件边核对回答。
-5. 结果生成后立刻查看 Provenance，而不是只下载最终文件。
-
+1. Use `@` to identify input files before describing the task.
+2. Choose `Plan first` for costly tasks or tasks that write files.
+3. Keep the permission mode on `Ask`; consider Auto-approve edits only for a stable, repeated operation.
+4. Keep Preview open in split view while comparing files with the response.
+5. Inspect Provenance as soon as an output is created, instead of downloading only the final file.

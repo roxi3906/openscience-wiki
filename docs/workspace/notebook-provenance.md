@@ -1,72 +1,71 @@
 ---
 sidebar_position: 5
-title: Notebook 与 Provenance
+title: Notebook and Provenance
 ---
 
-# Notebook 与 Provenance
+# Notebook and Provenance
 
-Session Notebook 汇总代理实际运行的 Python、R 与 shell 单元；Provenance 以 artifact version 为中心，串联生产代码、执行日志、消息、环境和复核证据。
+The Session Notebook collects the Python, R, and shell units that the agent actually ran. Provenance starts with an artifact version and connects its producer code, execution log, messages, environment, and review evidence.
 
-## 打开 Session Notebook
+## Open the Session Notebook
 
-Session `…` → `View notebook`。
+Open the session `…` menu, then select `View notebook`.
 
 ![Session Notebook](/img/open-science/session-notebook.png)
 
-| 控件 | 行为 |
+| Control | Behavior |
 | --- | --- |
-| `Agent` 下拉 | 在 Main Agent 与 subagent 的运行间过滤 |
-| `Python` / `R` / `Bash` 标签 | 标签数字是该语言/类型的 run 数量 |
-| 单元标题 `[0]` | 表示执行顺序与工具类型 |
-| `Copy to clipboard` | 复制输入代码/命令 |
-| `Hide/Show output` | 折叠或展开 stdout、结果、图像与错误 |
-| `.ipynb` | 有可转换 Notebook cell 时下载 Jupyter 文件；只有 shell 时可能禁用 |
-| `Close` | 关闭对话框，不终止 agent 或删除 runs |
+| `Agent` menu | Filter runs by Main Agent or a subagent |
+| `Python` / `R` / `Bash` tabs | The number on a tab is the count of runs for that language or type |
+| Unit heading `[0]` | Shows execution order and tool type |
+| `Copy to clipboard` | Copy the input code or command |
+| `Hide/Show output` | Collapse or open stdout, results, figures, and errors |
+| `.ipynb` | Download a Jupyter file when convertible notebook cells exist; a shell-only session may leave it disabled |
+| `Close` | Close the dialog without stopping the agent or deleting runs |
 
-输入数据条会标注运行引用的文件；figure/output 与 notebook run 关联。安装包后应重启 kernel，避免旧进程仍使用过期环境。
+An input-data strip identifies files referenced by a run. Figures and outputs remain tied to the notebook run. After package installation, restart the kernel when prompted so an old process doesn't keep using the previous environment.
 
-## 生成 artifact
+## Produce an artifact
 
-代理产生文件后，assistant 消息出现 `GENERATED · n` 与文件卡片。点击打开；Generated files 也会按 session 分组出现在 Files 面板。
+When the agent creates a file, its assistant message shows `GENERATED · n` and a file card. Select the card to open it. The same file appears under Generated files, grouped by session.
 
-![生成 artifact 的消息](/img/open-science/provenance-artifact-response.png)
-![生成文件预览](/img/open-science/generated-artifact-preview.png)
+![Message with a generated artifact](/img/open-science/provenance-artifact-response.png)
+![Generated file preview](/img/open-science/generated-artifact-preview.png)
 
-## 打开 Provenance
+## Open Provenance
 
-文件预览 → `File actions` → `Provenance`。
+In the file preview, select `File actions`, then `Provenance`.
 
-![文件操作菜单](/img/open-science/artifact-actions-menu.png)
+![File actions menu](/img/open-science/artifact-actions-menu.png)
 
 ### Code
 
 ![Provenance Code](/img/open-science/provenance-code.png)
 
-显示 Captured producer block。`Download` 保存代码，`Copy to clipboard` 复制，`Generate script` 可用当前 Provider/model 从不可变 Execution Log 生成独立脚本；生成脚本是新的派生结果，不能替代原始证据。
+Code shows the Captured producer block. `Download` saves it, `Copy to clipboard` copies it, and `Generate script` asks the current provider and model to derive a standalone script from the immutable Execution Log. A generated script is a new derived result; it doesn't replace the original evidence.
 
 ### Execution Log
 
 ![Execution Log](/img/open-science/provenance-execution-log.png)
 
-按顺序显示实际工具、输入、输出、状态与时间，是复现“执行了什么”的主要证据。不要只从最终文件反推流程。
+This tab lists the actual tools, inputs, outputs, states, and timing in order. Use it as the primary account of what ran instead of inferring the process from the final file.
 
 ### Messages
 
 ![Provenance Messages](/img/open-science/provenance-messages.png)
 
-显示与该版本产生相关的用户/assistant 消息，帮助解释意图、约束和决策。
+Messages shows the user and assistant text associated with this version, preserving intent, constraints, and decisions.
 
 ### Environment
 
 ![Provenance Environment](/img/open-science/provenance-environment.png)
 
-显示运行环境信息与捕获到的依赖/上下文。用于发现 Python/R 版本、包或运行位置差异。
+Environment reports captured runtime and dependency context. Compare it when Python or R versions, packages, or execution locations may explain a different result.
 
 ### Review
 
 ![Provenance Review](/img/open-science/provenance-review.png)
 
-显示 reviewer 状态与审查材料。`Review` 不等于证明结论正确；它记录何种检查在何时对哪个版本执行。
+Review reports reviewer state and material. A review doesn't prove the conclusion; it records which check ran, when it ran, and which artifact version it covered.
 
-顶部 `Previous/Next Artifact version` 和 `vN` 在不可变版本间导航，`Close Provenance` 返回文件预览。每个版本独立保留证据链。
-
+Use `Previous/Next Artifact version` and `vN` to move through immutable versions. `Close Provenance` returns to the file preview. Each version keeps its own evidence chain.

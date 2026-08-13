@@ -1,44 +1,43 @@
 ---
 sidebar_position: 5
-title: Compute 与 Network
+title: Compute and Network
 ---
 
-# Compute 与 Network
+# Compute and Network
 
-## Compute（计算）
+## Compute
 
-![Compute 面板](/img/open-science/settings-compute.png)
+![Compute panel](/img/open-science/settings-compute.png)
 
-Compute 管理本地与 SSH 远程主机。列表显示状态、资源与默认/启用情况，`Add host` 打开连接表单，卡片进入详情，开关控制 agent 是否可选用。
+Compute manages local and remote SSH hosts. The list shows status, resources, and default or enabled state. `Add host` opens the connection form, a host card opens its details, and the switch determines whether the agent may select it.
 
-Add form 通常包括 Display name、Host、Port、Username、认证方式/SSH 配置以及信任确认。保存后执行 probe；失败可 `Retry probe`。不要把私钥正文粘进普通说明字段，优先使用系统 SSH 配置/agent。
+The Add form usually includes Display name, Host, Port, Username, authentication or SSH configuration, and a trust confirmation. Saving starts a probe; choose `Retry probe` if it fails. Do not paste private-key contents into an ordinary description field. Prefer the system SSH configuration or SSH agent.
 
-Host detail 提供：
+Host detail provides:
 
-- `Resources`：检测 CPU、内存、GPU/调度环境等。
-- `Details`：查看、编辑、复制或删除连接配置。
-- `Scratch root`：点击 Edit 后在 `Scratch root path` 填远程临时工作目录，Save/Cancel。
-- `Concurrent job limit`：Edit 后输入正整数，限制同一主机并发任务，Save/Cancel。
-- Probe/Refresh：重新检测在线状态与资源。
-- Remove/Delete：确认后移除配置，不等于删除远程主机文件。
+- `Resources`: detected CPU, memory, GPU, scheduler, and related information.
+- `Details`: inspect, edit, copy, or delete the connection configuration.
+- `Scratch root`: choose Edit, enter the remote temporary work directory in `Scratch root path`, then Save or Cancel.
+- `Concurrent job limit`: choose Edit, enter a positive integer that limits concurrent jobs on this host, then Save or Cancel.
+- Probe/Refresh: detect online status and resources again.
+- Remove/Delete: remove the configuration after confirmation; remote files on the host are not deleted.
 
-Agent 请求远程执行时会弹出 Compute approval：`Deny`、`Allow once`、`Allow for session`、project、global；项目/全局 scope 需要额外确认。长任务可以提交、跟踪、harvest 结果并把输出带回项目。
+When an agent asks to execute remotely, Compute shows an approval request with `Deny`, `Allow once`, `Allow for session`, project, and global options. Project and global scopes need an extra confirmation. Long jobs can be submitted and tracked; Open Science can then harvest their results into the project.
 
-## Network（网络）
+## Network
 
-![Network 面板](/img/open-science/settings-network.png)
+![Network panel](/img/open-science/settings-network.png)
 
-`Network status` 结合本机 link 和端到端探测显示 Checking、reachable、unreachable 或 offline；异常时 `Check again` 重试，并提示检查 Wi-Fi/网线、proxy/VPN/firewall 和 mirror。
+`Network status` combines the local link state with an end-to-end probe. It reports Checking, reachable, unreachable, or offline. If the check fails, use `Check again` and inspect Wi-Fi or Ethernet, the proxy or VPN, the firewall, and package mirrors.
 
 ### Package mirror
 
-`Configure`/`Edit` 打开以下输入：
+`Configure` or `Edit` opens these inputs:
 
-| 输入 | 示例/作用 |
+| Input | Example or purpose |
 | --- | --- |
-| `Conda channel mirror` | Conda-forge 镜像根地址 |
-| `Python package index (pip)` | 以 `/simple` 结尾的 pip index |
-| `CA bundle path` | 可选 PEM，供企业 TLS proxy 的 Conda、pip、R 下载信任 |
+| `Conda channel mirror` | The root URL for a Conda-forge mirror |
+| `Python package index (pip)` | A pip index URL ending in `/simple` |
+| `CA bundle path` | An optional PEM file trusted by Conda, pip, and R behind a corporate TLS proxy |
 
-`Cancel` 放弃草稿，`Save` 保存，`View available mirrors` 打开帮助链接。镜像只改变包下载来源，不是通用 Provider proxy；填写错误会导致 runtime/package 安装失败。
-
+`Cancel` discards the draft, `Save` stores it, and `View available mirrors` opens help. Mirrors affect package downloads only; they are not general Provider proxies. An incorrect mirror can cause runtime or package installation to fail.

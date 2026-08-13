@@ -1,45 +1,44 @@
 ---
 sidebar_position: 1
-title: 主页、项目与导航
+title: Home, Projects, and Navigation
 ---
 
-# 主页、项目与导航
+# Home, Projects, and Navigation
 
-Open Science 的导航层级是 **主页 → 项目 → 会话**。项目保存长期上下文和文件；会话保存某次对话、执行、Notebook、权限事件与 artifact 版本。
+Open Science has three navigation levels: **home → project → session**. A project stores long-lived context and files. A session stores one conversation together with its execution records, notebook runs, permission events, and artifact versions.
 
-## 工作区侧边栏
+## Workspace sidebar
 
-![空工作区](/img/open-science/workspace-empty.png)
+![Empty workspace](/img/open-science/workspace-empty.png)
 
-| 控件 | 行为 |
+| Control | Behavior |
 | --- | --- |
-| `All projects` | 返回主页；未发送的草稿按当前 session 保存 |
-| 项目名按钮 | 打开项目菜单/项目上下文入口 |
-| `Collapse sidebar panel` | 收起左栏，为对话和预览腾出空间；再次点击展开 |
-| `New` | 新建空 session；不会删除或覆盖当前 session |
-| `Customize` | 以定制意图启动对话，用于创建/修改 Skill 或 Specialist |
-| `Files` | 打开/关闭右侧项目文件面板 |
-| Session 行 | 切换会话；状态可为 Idle、Running、Waiting for permission 等 |
-| Session `…` | Pin、Rename、View notebook、Archive、Delete |
-| `Messages` | 打开通知中心；角标是未读数量 |
-| `Settings` | 打开设置中心 |
-| GitHub 星标 | 在浏览器打开官方仓库 |
+| `All projects` | Return to Home; unsent drafts remain associated with their current session |
+| Project name | Open the project menu or project context entry |
+| `Collapse sidebar panel` | Hide the left panel to make room for the conversation and preview; select it again to restore the panel |
+| `New` | Create an empty session without deleting or replacing the current session |
+| `Customize` | Start a customization conversation for creating or changing a Skill or Specialist |
+| `Files` | Open or close the project files panel on the right |
+| Session row | Switch sessions; the status can read Idle, Running, Waiting for permission, and so on |
+| Session `…` | Open Pin, Rename, View notebook, Archive, and Delete |
+| `Messages` | Open the notification center; the badge shows the unread count |
+| `Settings` | Open Settings |
+| GitHub star | Open the official repository in a browser |
 
-分隔条 `Resize left panel` 与 `Resize right panel` 可拖动；右边缘 `Collapse/Expand preview panel` 单独控制预览区。窄屏下同样内容会转为抽屉或 sheet。
+Drag `Resize left panel` or `Resize right panel` to change panel widths. The right-edge `Collapse/Expand preview panel` button controls the preview area separately. On narrow screens, the same content appears in a drawer or sheet.
 
-## Session 状态与操作
+## Session states and actions
 
-![Session 操作菜单](/img/open-science/session-actions-menu.png)
+![Session actions menu](/img/open-science/session-actions-menu.png)
 
-- `Pin`：固定在 Active 列表前部；再次操作可取消固定。
-- `Rename…`：打开名称输入框；确认后只修改显示名，不改变消息。
-- `View notebook`：打开本会话的 Python、R、shell 执行集合。
-- `Archive`：从 Active 移至 Settings → Archived，可恢复。
-- `Delete`：永久删除前弹出确认；运行中或有待处理权限时可能不可用。
+- `Pin`: keep the session near the top of Active; select the action again to unpin it.
+- `Rename…`: open a name field. Confirming changes the display title but leaves the messages intact.
+- `View notebook`: open the Python, R, and shell runs for this session.
+- `Archive`: move the session out of Active and into Settings → Archived, where it can be restored.
+- `Delete`: show a confirmation before permanent deletion. It may be unavailable while the session runs or waits for permission.
 
-切换项目/会话前，Open Science 会协调正在运行的 agent、草稿和待确认操作。若看到 Pending switch 或 interrupted 提示，应先处理权限/计划或确认中止。
+Before a project or session switch, Open Science coordinates the current agent, draft, and unresolved requests. If a pending-switch or interrupted notice appears, answer the permission or plan request, or confirm the interruption first.
 
-## 搜索与通知
+## Search and notifications
 
-全局 Search 可匹配项目、session 和文件。选择结果会跳到所属项目或打开文件预览。输入为空时显示最近项；`Esc` 关闭。通知中心汇总完成、权限、失败和后台任务消息；单项可进入关联 session，顶部操作可处理已读状态。
-
+Global Search matches projects, sessions, and files. Selecting a result opens its project or file preview. An empty search shows recent items; `Esc` closes the dialog. The notification center collects completion, permission, failure, and background-task notices. Select a notice to open its session, and use the available read-state actions to clear its badge.

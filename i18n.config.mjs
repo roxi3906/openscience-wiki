@@ -1,11 +1,6 @@
-export const defaultLocale = 'zh-Hans';
+export const defaultLocale = 'en';
 
 export const localeConfigs = {
-  'zh-Hans': {
-    label: '简体中文',
-    htmlLang: 'zh-Hans',
-    direction: 'ltr',
-  },
   en: {
     label: 'English',
     htmlLang: 'en',

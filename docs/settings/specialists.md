@@ -5,34 +5,33 @@ title: Specialists
 
 # Specialists
 
-![Specialists 面板](/img/open-science/settings-specialists.png)
+![Specialists panel](/img/open-science/settings-specialists.png)
 
-Specialist 是可复用的专家角色：Identity + Instructions + Capabilities。它可以被主 agent 选择，也可参与 delegation，但不能绕过用户权限。
+A Specialist is a reusable expert role made from Identity, Instructions, and Capabilities. The main agent can select it, and it can take part in delegation, but it cannot bypass user permissions.
 
-## 列表与入口
+## List and entry points
 
-- `Filter specialists by category` 与 `Search specialists` 缩小列表。
-- 卡片点击打开详情；开关启用/禁用。
-- `Actions for <name>` 提供 Edit、Export、Duplicate/Remove 等适用操作。
-- Add 菜单可创建 Personal Specialist 或 `Import a Specialist package`。
+- `Filter specialists by category` and `Search specialists` narrow the list.
+- Select a card to open its details; use the switch to enable or disable it.
+- `Actions for <name>` provides applicable operations such as Edit, Export, Duplicate, and Remove.
+- The Add menu can create a Personal Specialist or `Import a Specialist package`.
 
 ## Specialist Editor
 
-| 区域/输入 | 用途 |
+| Area or input | Purpose |
 | --- | --- |
-| Identity → icon/color | 在选择器、消息和 subagent 行中的视觉身份 |
-| Name | 唯一清晰的专家名，如 RNA-seq Reviewer |
-| Description | 列表与 picker 的短说明 |
-| Instructions | 追加的专业目标、流程和边界；空白时使用 base prompt |
-| `Full access` | 允许访问所有可用 capability；谨慎开启 |
-| `Capability type` | 选择 Skills、Connectors 等能力集合 |
-| `Search skills to add` | 搜索并加入明确 Skill |
-| `Search connectors to add` | 搜索并加入明确 Connector |
-| `Enable select capabilities` | 使用选择清单而非全部能力 |
+| Identity → icon/color | The visual identity used in selectors, messages, and subagent rows |
+| Name | A distinct, clear name such as RNA-seq Reviewer |
+| Description | A short description for the list and picker |
+| Instructions | Additional domain goals, process, and boundaries; the base prompt applies when this is blank |
+| `Full access` | Permit all available capabilities; enable with care |
+| `Capability type` | Select a capability set such as Skills or Connectors |
+| `Search skills to add` | Find and add a specific Skill |
+| `Search connectors to add` | Find and add a specific Connector |
+| `Enable select capabilities` | Use an explicit selection instead of all capabilities |
 
-`Cancel` 放弃未保存编辑，`Save/Create` 写入。若出现 `Revision conflict`，应加载最新版本或有意识地解决冲突。
+`Cancel` discards unsaved edits. `Save` or `Create` writes the changes. If a `Revision conflict` appears, load the latest version or resolve the conflict deliberately.
 
-## 导入与导出
+## Import and export
 
-Import 选择 Specialist ZIP 后显示 package preview、Skills、Archive limits 和 Diagnostics；`Select ZIP`、重新选择、Cancel、Import 控制流程。导出可把专家配置和允许的资源打包；秘密和机器专属凭据不应进入共享包。删除前会显示该 Specialist 的引用/影响，active specialist 可能需要先切换。
-
+After you select a Specialist ZIP, Import shows the package preview, Skills, Archive limits, and Diagnostics. `Select ZIP`, reselect, Cancel, and Import control the process. Export can package the Specialist configuration and approved resources. Secrets and machine-specific credentials must not be included in a shared package. Before deletion, the application shows references to the Specialist and the effect of removing it; you may need to switch away from an active Specialist first.

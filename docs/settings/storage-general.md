@@ -1,41 +1,40 @@
 ---
 sidebar_position: 8
-title: Storage 与 General
+title: Storage and General
 ---
 
-# Storage 与 General
+# Storage and General
 
-## Storage（存储）
+## Storage
 
-![Storage 面板](/img/open-science/settings-storage.png)
+![Storage panel](/img/open-science/settings-storage.png)
 
-`Application storage` 检查私有配置目录写权限，提供 `Reveal` 在文件管理器中显示、Repair/Continue 等状态相关操作。该目录与可选择的 Data location 不同。
+`Application storage` checks write access to the private configuration directory. Depending on its state, it offers `Reveal` in the file manager, Repair, or Continue. This directory is separate from the selectable Data location.
 
-`Data location` 显示 `Data root path`：
+`Data location` shows the `Data root path`:
 
-- `Change` 打开风险说明。
-- 输入 `/path/to/new/location` 或 `Browse` 选择目录。
-- 界面检查目标、现有 Open Science 数据、磁盘空间和访问权限。
-- `Move/Migrate` 启动迁移；进度显示当前路径、elapsed，可在允许阶段 Cancel。
-- 冲突时可采用现有数据（Adopt）或选择其他目录；只在确认它是完整 Open Science root 时 Adopt。
-- `Cancel` 放弃新路径草稿。
+- `Change` opens a risk notice.
+- Enter `/path/to/new/location`, or use `Browse` to select a directory.
+- The interface checks the target, existing Open Science data, available disk space, and access permissions.
+- `Move` or `Migrate` starts the migration. Progress shows the current path and elapsed time; Cancel is available only at stages where it is safe.
+- If the target conflicts with existing data, adopt that data or choose a different directory. Choose Adopt only after confirming that the target is a complete Open Science data root.
+- `Cancel` discards the new-path draft.
 
-迁移失败会提供 Retry/Restart/Discard 等与当前阶段相符的恢复操作。迁移进行中不要退出应用、拔盘或手工搬数据库。
+After a failed migration, the dialog offers recovery operations such as Retry, Restart, or Discard according to its current stage. Do not quit the application, disconnect the drive, or move database files manually while migration is in progress.
 
-`Disk usage` 按 Projects、Artifacts、Caches/其他类别显示大小，可展开子项。这里用于定位占用，不应把系统文件管理器的删除当成应用内清理。
+`Disk usage` shows size by Projects, Artifacts, Caches, and other categories, with expandable items. Use it to locate storage usage; deleting files directly in the system file manager is not equivalent to in-app cleanup.
 
-## General（常规）
+## General
 
-![General 面板](/img/open-science/settings-general.png)
+![General panel](/img/open-science/settings-general.png)
 
-| 区域 | 控件 |
+| Area | Controls |
 | --- | --- |
-| Notifications | `Toggle task notifications` 控制任务完成等系统通知 |
-| Theme | System、Light、Dark 单选；与主页 Theme 菜单同步 |
-| App icon | 支持的平台显示内置图标单选；某些 Linux 环境隐藏 |
-| Window behavior | `When closing the window` 选择退出或保留后台/托盘行为，依平台可用 |
-| GitHub token | 打开 token settings，输入/保存/清除；用于需要 GitHub 鉴权的功能 |
-| About | 当前版本；`Check for updates`、下载/安装更新等依构建渠道显示 |
+| Notifications | `Toggle task notifications` controls system notifications for completed tasks and related events |
+| Theme | Select System, Light, or Dark; this stays in sync with the Home Theme menu |
+| App icon | On supported platforms, select one of the built-in icons; some Linux environments hide this setting |
+| Window behavior | `When closing the window` controls whether the app quits or stays in the background or tray, where supported |
+| GitHub token | Open token settings, then enter, save, or clear a token used by features that need GitHub authentication |
+| About | Shows the installed version; `Check for updates`, download, and install operations depend on the release channel |
 
-主题和通知即时生效。GitHub token 以秘密保存，不会注入普通项目文件；清除后依赖它的私有仓库/限额能力会失效。
-
+Theme and notification changes take effect immediately. The GitHub token is stored as a secret and is not written into ordinary project files. Clearing it disables private-repository and rate-limit features that depend on it.

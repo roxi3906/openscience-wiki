@@ -1,48 +1,48 @@
 ---
 sidebar_position: 3
-title: 第一个项目
+title: Your First Project
 ---
 
-# 创建第一个项目
+# Create Your First Project
 
-## 认识主页
+## Home page
 
-![尚无项目的主页](/img/open-science/home-empty.png)
+![Home page with no projects](/img/open-science/home-empty.png)
 
-顶部工具包括 GitHub、全局 Search、Theme、Messages 和 Model settings。主体的 `New project` 创建项目；已有项目与最近会话会作为可点击卡片出现。
+The top bar contains GitHub, global Search, Theme, Messages, and Model settings. `New project` creates a project. Existing projects and recent sessions appear as selectable cards.
 
-- `Search`：跨项目、会话和文件搜索；也可以在工作区使用 `⌘K`/`Ctrl+K`。
-- `Theme`：在 System、Light、Dark 间切换。
-- `Messages`：查看任务完成、权限等待、错误等通知并标记已读。
-- `Model settings`：直接进入 Settings → Model。
-- GitHub：打开 `aipoch/open-science`。
+- `Search`: search across projects, sessions, and files. In the workspace, `⌘K` or `Ctrl+K` opens it.
+- `Theme`: choose System, Light, or Dark.
+- `Messages`: read completion, permission, error, and background-task notices, then manage their read state.
+- `Model settings`: open Settings → Model directly.
+- GitHub: open `aipoch/open-science`.
 
-![主题菜单](/img/open-science/home-theme-menu.png)
-![消息中心](/img/open-science/home-message-center.png)
-![全局搜索](/img/open-science/global-search.png)
+![Theme menu](/img/open-science/home-theme-menu.png)
+![Message center](/img/open-science/home-message-center.png)
+![Global search](/img/open-science/global-search.png)
 
-## 新建项目
+## Create the project
 
-点击 `New project` 打开表单。
+Select `New project` to open the form.
 
-![项目创建对话框](/img/open-science/project-create-dialog.png)
+![Create project dialog](/img/open-science/project-create-dialog.png)
 
-| 字段 | 是否必填 | 建议 |
+| Field | Required? | Guidance |
 | --- | --- | --- |
-| `Name` | 是 | 使用可辨识的研究问题或实验名；它会出现在侧边栏和搜索中 |
-| `Description` | 否 | 描述目标、样本或交付物，不要塞入完整提示词 |
-| `Agent Context` | 否 | 写长期约束，例如统计规范、引用规则、输出结构和不可触碰的目录 |
+| `Name` | Yes | Use a recognizable research question or experiment name; it appears in the sidebar and search |
+| `Description` | No | State the objective, sample, or expected deliverable rather than pasting the full prompt |
+| `Agent Context` | No | Record durable constraints such as statistical rules, citation policy, output structure, and protected paths |
 
-![填写完成的项目表单](/img/open-science/project-create-form.png)
+![Completed project form](/img/open-science/project-create-form.png)
 
-`Cancel` 放弃创建，`Create project` 创建并进入空工作区。创建后可以从项目菜单编辑同类信息；删除项目会连同受管理的项目记录进入确认流程，应先下载重要 artifact。
+`Cancel` closes the form without creating anything. `Create project` saves the project and opens an empty workspace. The project menu can later edit the same metadata. Project deletion runs through a confirmation flow and removes managed project records, so download any needed artifacts first.
 
-## 发送第一条请求
+## Send the first request
 
-1. 在 `Ask anything` 输入具体目标。
-2. 点击模型按钮确认 Active model 与 Reasoning effort。
-3. 点击 Agent controls 选择 Ask、Auto-approve edits 或 Full access。
-4. 如需资料，点击 `+` 选择 Attach files 或 Your files。
-5. 点击发送箭头；右侧下拉可选择 `Plan first` 等发送方式。
+1. Enter a specific goal in `Ask anything`.
+2. Select the model button and check the Active model and Reasoning effort.
+3. Open Agent controls and choose Ask, Auto-approve edits, or Full access.
+4. If the request needs source material, select `+`, then Attach files or Your files.
+5. Select the send arrow. Its adjacent menu offers `Plan first` and other send modes.
 
-第一条消息成功后会自动创建 session 并用消息首句命名。详见 [对话与输入区](../workspace/conversation.md)。
+After the first message, Open Science creates a session and names it from the opening text. See [Conversation and composer](../workspace/conversation.md) for the rest of the controls.

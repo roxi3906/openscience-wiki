@@ -1,39 +1,39 @@
 ---
 sidebar_position: 9
-title: Remote control 与 Archived
+title: Remote control and Archived
 ---
 
-# Remote control 与 Archived
+# Remote control and Archived
 
 ## Remote control
 
-![Remote control 面板](/img/open-science/settings-remote-control.png)
+![Remote control panel](/img/open-science/settings-remote-control.png)
 
-Remote control 让浏览器访问正在运行的 Open Science。入口受短期 token/配对与本机进程保护；它不是把整个数据目录发布成公开网站。
+Remote control lets a browser connect to the running Open Science application. A short-lived token or pairing step and the local process protect the entry point; this feature does not publish the entire data directory as a public website.
 
-主要区域与控制：
+Main areas and controls:
 
-- Local/Browser access 状态：Start/Stop/Refresh（按当前状态显示）。
-- `Browser link is ready`：`Copy` 复制访问 URL，`Open` 在浏览器打开；QR `Scan to open` 供另一设备访问。
-- 访问步骤：保持桌面应用运行、确认网络/服务可达、在新设备完成配对。
-- Remote.It：检测用户自行安装的 desktop CLI，进行 Setup/Retry/Disconnect 等；Open Science 不捆绑、不注册第三方账号。
-- `Trusted browsers`：显示 browser、platform、Last used；`Revoke <browser>` 使其下次请求/WebSocket 重连失效。
-- `Pairing requests (n)`：核对浏览器、平台、地址和六位 code，选择 `Reject`、`Allow once`、`Always trust this browser`。
+- Local/Browser access status: Start, Stop, or Refresh appears according to the current state.
+- `Browser link is ready`: `Copy` copies the access URL and `Open` opens it in a browser. The `Scan to open` QR code connects another device.
+- Access steps: keep the desktop application running, confirm that the network or service is reachable, and complete pairing on a new device.
+- Remote.It: detects a desktop CLI that the user installed separately and offers Setup, Retry, or Disconnect. Open Science neither bundles it nor registers a third-party account.
+- `Trusted browsers`: shows browser, platform, and Last used. `Revoke <browser>` invalidates its next request or WebSocket reconnection.
+- `Pairing requests (n)`: verify the browser, platform, address, and six-digit code, then choose `Reject`, `Allow once`, or `Always trust this browser`.
 
-不要把带 token 的访问 URL 发到公开频道。永久信任只适用于你控制的设备；设备丢失后立即 Revoke，并停止/重新建立远程入口。
+Do not share an access URL containing a token in a public channel. Permanently trust only devices you control. If a device is lost, revoke it immediately and stop or recreate the remote entry point.
 
 ## Archived
 
-![Archived 面板](/img/open-science/settings-archived.png)
+![Archived panel](/img/open-science/settings-archived.png)
 
-归档页分 Projects 与单独归档 Sessions。项目行显示归档时间与 `Manage`；进入后列出项目 Sessions。
+Archived separates Projects from individually archived Sessions. A project row shows the archive time and `Manage`; its detail view lists the project's Sessions.
 
-| 控件 | 行为 |
+| Control | Behavior |
 | --- | --- |
-| 项目行/`Manage` | 打开归档项目详情 |
-| `Restore project` | 恢复项目；其被项目隐藏的 sessions 随之可见 |
-| `Delete project` | 确认后永久删除项目及相关 session 记录 |
-| `Restore` session | 恢复单独归档 session；项目仍归档时禁用并提示先恢复项目 |
-| `Delete` session | 确认后永久删除该 session |
+| Project row/`Manage` | Open the archived project details |
+| `Restore project` | Restore the project and make its project-hidden sessions visible again |
+| `Delete project` | Permanently delete the project and related session records after confirmation |
+| Session `Restore` | Restore an individually archived session; disabled until its archived project is restored |
+| Session `Delete` | Permanently delete the session after confirmation |
 
-归档是整理，删除是不可逆清理。删除对话框显示 session 数量/目标名称；确认前下载 artifact 和 Notebook。
+Archiving organizes records; deletion cannot be undone. The deletion dialog shows the target name or session count. Download needed artifacts and Notebooks before confirming.

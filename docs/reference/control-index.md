@@ -1,158 +1,157 @@
 ---
 sidebar_position: 1
-title: 完整页面与控件索引
-description: 按页面查找 Open Science 的按钮、输入、开关和结果。
+title: Complete page and control index
+description: Find every documented Open Science button, input, switch, and result by page.
 ---
 
-# 完整页面与控件索引
+# Complete page and control index
 
-本页把实际界面入口按页面压缩成可检索清单。状态相关控件只在条件满足时出现；Disabled 表示缺少前置条件，不是实现缺失。
+This page condenses the application's entry points into a searchable, page-by-page list. State-dependent controls appear only when their conditions are met. Disabled means a prerequisite is missing, not that the control is unimplemented.
 
 ## Onboarding
 
-| 页面 | 控件 | 结果/前置条件 |
+| Page | Controls | Result or prerequisite |
 | --- | --- | --- |
-| Environment | 检查行、Retry/Continue | 展示 System/Storage/Secure vault/Install network；关键失败时不能继续 |
-| Agent | Framework card、Install、Active、Back/Continue | 安装或选中 agent runtime |
-| Model | Provider type/name、Endpoint/Base URL、API format、key、model、context、Images、Reasoning、Test、Add | Test 成功且有可用模型后继续 |
-| Notebook | Python/R switch、Add interpreter、Download and set up、Packages | 选择 agent 可用执行环境；可稍后设置 |
-| Location | Location、Browse、Back、Finish | 写入数据 root 并完成引导 |
+| Environment | Check rows, Retry/Continue | Shows System, Storage, Secure vault, and Install network; a blocking failure prevents Continue |
+| Agent | Framework card, Install, Active, Back/Continue | Install or select an agent runtime |
+| Model | Provider type/name, Endpoint/Base URL, API format, key, model, context, Images, Reasoning, Test, Add | Continue after Test succeeds and a working model is available |
+| Notebook | Python/R switch, Add interpreter, Download and set up, Packages | Select an execution environment for the agent; this step can be completed later |
+| Location | Location, Browse, Back, Finish | Write the data root and complete onboarding |
 
-## Home 与项目
+## Home and projects
 
-| 页面 | 控件 | 结果 |
+| Page | Controls | Result |
 | --- | --- | --- |
-| Home header | GitHub、Search、Theme、Messages、Model settings | 外链、全局搜索、主题、通知、打开 Model |
-| Home body | New project、项目卡、Recent session | 新建或打开项目/session |
-| Theme menu | System、Light、Dark | 设置外观并同步 General |
-| Search | Search input、结果项、Esc | 查找并跳转项目/session/file |
-| Messages | 通知项、已读操作、Close | 跳转来源和管理未读 |
-| Create project | Name、Description、Agent Context、Cancel、Create project | 创建项目；Name 必填 |
-| Project actions | Edit/Archive/Delete 等状态相关项 | 修改项目元数据、归档或确认删除 |
+| Home header | GitHub, Search, Theme, Messages, Model settings | Open the repository, global search, appearance menu, notifications, or Model settings |
+| Home body | New project, project card, Recent session | Create or open a project or session |
+| Theme menu | System, Light, Dark | Set appearance and keep it in sync with General |
+| Search | Search input, result item, Esc | Find and open a project, session, or file |
+| Messages | Notification item, read action, Close | Open the source and manage unread items |
+| Create project | Name, Description, Agent Context, Cancel, Create project | Create a project; Name is required |
+| Project actions | State-dependent Edit, Archive, Delete, and related actions | Change project metadata, archive the project, or confirm deletion |
 
-## Workspace 左栏与布局
+## Workspace sidebar and layout
 
-| 控件 | 结果 |
+| Control | Result |
 | --- | --- |
-| All projects | 返回 Home |
-| Project name | 项目入口/菜单 |
-| Collapse sidebar | 收起/展开左栏 |
-| New | 新 session |
-| Customize | 启动 Skill/Specialist 定制对话 |
-| Files | 切换右侧项目文件面板 |
-| Session row | 切换 session；状态显示 Idle/Running/Permission 等 |
-| Session actions | Pin/Unpin、Rename、View notebook、Archive、Delete |
-| Messages、Settings、GitHub | 通知、设置、官方仓库 |
-| Resize left/right、Collapse preview | 拖动面板或收起预览 |
+| All projects | Return to Home |
+| Project name | Open the project entry point or menu |
+| Collapse sidebar | Collapse or expand the left sidebar |
+| New | Create a session |
+| Customize | Start a Skill/Specialist customization conversation |
+| Files | Show the project files panel on the right |
+| Session row | Switch sessions; status reports Idle, Running, Permission, or another state |
+| Session actions | Pin/Unpin, Rename, View notebook, Archive, Delete |
+| Messages, Settings, GitHub | Open notifications, settings, or the official repository |
+| Resize left/right, Collapse preview | Resize a panel or collapse Preview |
 
-## Conversation 与 Composer
+## Conversation and Composer
 
-| 区域 | 控件/输入 | 结果 |
+| Area | Control or input | Result |
 | --- | --- | --- |
-| Message | Copy、Edit | 复制；编辑创建 revision |
-| Revision | Previous、`n/N`、Next | 浏览消息修订 |
-| Assistant result | Usage、Elapsed、generated file | 检查用量/耗时，打开输出 |
-| Activity | 折叠标题、Details、Copy、Report error | 展开工具/代码/diff/search/错误 |
-| Input | Ask anything、`↑↓`、`/`、`@`、`⌘K/Ctrl+K` | 输入、历史、Skill、文件引用、搜索 |
-| `+` | Attach files、Your files、Review、Context | 暂存新/已有文件、复核、上下文详情 |
-| Attachment chip | Preview、Remove | 发送前检查或取消引用 |
-| Agent controls | Specialist、Delegation、Auto-review、Permission mode | 改变后续 request 策略 |
-| Model | Active model、Reasoning effort | 改变后续 request 的模型/强度 |
-| Send | Send、Plan first、Side chat、Branch、Stop | 发送不同模式或停止运行 |
-| Scroll to end | 回到最新消息 |
+| Message | Copy, Edit | Copy the message or create a revision by editing it |
+| Revision | Previous, `n/N`, Next | Browse message revisions |
+| Assistant result | Usage, Elapsed, generated file | Inspect usage and time, or open an output |
+| Activity | Collapsible title, Details, Copy, Report error | Open tool, code, diff, search, or error details |
+| Input | Ask anything, `↑↓`, `/`, `@`, `⌘K/Ctrl+K` | Enter text, browse history, select a Skill, reference a file, or search |
+| `+` | Attach files, Your files, Review, Context | Stage a new or existing file, request review, or inspect context |
+| Attachment chip | Preview, Remove | Inspect or remove a reference before sending |
+| Agent controls | Specialist, Delegation, Auto-review, Permission mode | Change the policy for later requests |
+| Model | Active model, Reasoning effort | Change the model or effort for later requests |
+| Send | Send, Plan first, Side chat, Branch, Stop | Submit in the selected mode or stop the current run |
+| Scroll to end | Jump to the latest message |
 
-## 权限、计划与结构化追问
+## Permission, plan, and structured questions
 
-| 表面 | 控件 | 结果 |
+| Surface | Controls | Result |
 | --- | --- | --- |
-| Permission | Impact info、Permission info、Allow once、Deny | 检查并批准/拒绝一次 |
-| Scope confirmation | Cancel、Confirm session/project/global | 保存更宽 grant；宽 scope 需二次确认 |
-| Plan | Approve/Run、Feedback 输入、Cancel | 接受计划、要求修改或取消 |
-| Elicitation | 结构化输入/选项、Submit、Cancel | 回答 agent 追问 |
-| Subagent permission | 身份/待处理计数、Allow/Deny | 单独审批 subagent 请求 |
+| Permission | Impact info, Permission info, Allow once, Deny | Inspect and approve or reject a single request |
+| Scope confirmation | Cancel, Confirm session/project/global | Save a broader grant; broad scopes require a second confirmation |
+| Plan | Approve/Run, Feedback input, Cancel | Accept a plan, ask for changes, or cancel |
+| Elicitation | Structured input or options, Submit, Cancel | Answer an agent question |
+| Subagent permission | Identity/pending count, Allow/Deny | Decide a subagent request separately |
 
-## Files 与 Preview
+## Files and Preview
 
-| 控件 | 结果 |
+| Control | Result |
 | --- | --- |
-| Filter、Search | 过滤 All/Artifacts 和文件名 |
-| Grid/List | 改变文件布局 |
-| Expand/Exit full screen | 文件库全屏/返回分栏 |
-| Category accordion | 展开 uploads 或某 session 的 generated files |
-| File card/body | 模态 preview |
-| Download | 保存原文件/版本 |
-| Open in split view | 添加右侧 preview tab |
-| Preview tab、Close tab | 切换/关闭预览 |
-| Full screen preview | 放大当前文件 |
-| File actions → Provenance | 打开 artifact 证据；普通 upload 无此项 |
-| Previous/vN/Next | 切 artifact version |
-| PDB Cartoon/Stick/Sphere/Surface/Line | 改变三维表示方式 |
-| PDF/Office/Image controls | 翻页、缩放、缩略图/下载；按 renderer 显示 |
+| Filter, Search | Filter by All or Artifacts and by file name |
+| Grid/List | Change the file layout |
+| Expand/Exit full screen | Open the file library full-screen or return to split view |
+| Category accordion | Expand uploads or generated files from a session |
+| File card/body | Open a modal Preview |
+| Download | Save the original file or selected version |
+| Open in split view | Add a Preview tab on the right |
+| Preview tab, Close tab | Switch or close Preview tabs |
+| Full screen preview | Enlarge the current file |
+| File actions → Provenance | Open artifact evidence; ordinary uploads do not have this action |
+| Previous/vN/Next | Change artifact version |
+| PDB Cartoon/Stick/Sphere/Surface/Line | Change the three-dimensional representation |
+| PDF/Office/Image controls | Navigate pages, zoom, show thumbnails, or download as supported by the renderer |
 
-## Notebook 与 Provenance
+## Notebook and Provenance
 
-| 页面 | 控件 | 结果 |
+| Page | Controls | Result |
 | --- | --- | --- |
-| Notebook | Agent filter、Python/R/Bash tabs | 按 agent/语言查看 runs |
-| Notebook cell | Copy、Show/Hide output | 复制输入、展开输出 |
-| Notebook footer | Download `.ipynb`、Close | 可转换时下载；关闭对话框 |
-| Provenance | version arrows、Close Provenance | 版本导航/返回 preview |
-| Provenance tabs | Code、Execution Log、Messages、Environment、Review | 切换证据类型 |
-| Code | Generate script、Download、Copy | 生成派生脚本或保存 producer block |
+| Notebook | Agent filter, Python/R/Bash tabs | Filter runs by agent or language |
+| Notebook cell | Copy, Show/Hide output | Copy input or expand output |
+| Notebook footer | Download `.ipynb`, Close | Download when cells can be converted, or close the dialog |
+| Provenance | Version arrows, Close Provenance | Change version or return to Preview |
+| Provenance tabs | Code, Execution Log, Messages, Environment, Review | Change the evidence type |
+| Code | Generate script, Download, Copy | Create a derived script or save the producer block |
 
-## Settings 全局
+## Global Settings controls
 
-`Back`、`Forward`、面包屑、`Maximize/Restore`、`Close settings`、移动端导航以及错误 `Dismiss` 适用于设置框架。
+`Back`, `Forward`, breadcrumbs, `Maximize/Restore`, `Close settings`, mobile navigation, and error `Dismiss` apply throughout Settings.
 
 ### Skills
 
-Conversation Skill imports、source filter、Search、Add skill、分类折叠、Skill detail、Enable toggle、Create/Upload/Import、Preview、Edit、Export、Delete、Cancel/Save。
+Conversation Skill imports, source filter, Search, Add skill, category collapse, Skill detail, enable switch, Create/Upload/Import, Preview, Edit, Export, Delete, Cancel, and Save.
 
 ### Connectors
 
-Filter/Search、Add/Import、Enable、Detail、Test/Reconnect、Edit、Export、Remove；Add form 包含 Type、Display name、ID、Description、Command、Arguments、Environment variables、URL、Transport、Authentication、OAuth scopes、Authorization server URL、Client metadata URL、Headers、Trust、Cancel、Add/Save。
+Filter/Search, Add/Import, Enable, Detail, Test/Reconnect, Edit, Export, and Remove. The Add form contains Type, Display name, ID, Description, Command, Arguments, Environment variables, URL, Transport, Authentication, OAuth scopes, Authorization server URL, Client metadata URL, Headers, Trust, Cancel, and Add/Save.
 
 ### Specialists
 
-Category filter、Search、Enable、Detail、Actions、Create/Import；Editor 包含 Icon、Color、Name、Description、Instructions、Full access、Capability type、Skill/Connector searches、selected capabilities、Cancel、Save。Import 包含 Select ZIP、Preview、Diagnostics、Cancel、Import。
+Category filter, Search, Enable, Detail, Actions, Create, and Import. The Editor contains Icon, Color, Name, Description, Instructions, Full access, Capability type, Skill/Connector searches, selected capabilities, Cancel, and Save. Import contains Select ZIP, Preview, Diagnostics, Cancel, and Import.
 
 ### Compute
 
-Add host、Host card/enable、Probe/Retry、Detail/Edit/Remove、Resources、Details document、Scratch root Edit/Input/Save/Cancel、Concurrent job limit Edit/Input/Save/Cancel；执行审批含 Deny、once、session、project、global。
+Add host, Host card/enable, Probe/Retry, Detail/Edit/Remove, Resources, Details document, Scratch root Edit/Input/Save/Cancel, and Concurrent job limit Edit/Input/Save/Cancel. Execution approvals offer Deny, once, session, project, and global.
 
 ### Network
 
-Check again；Package mirror Configure/Edit；Conda channel、pip index、CA bundle；View mirrors、Cancel、Save。
+Check again; Package mirror Configure/Edit; Conda channel, pip index, and CA bundle; View mirrors, Cancel, and Save.
 
 ### Model
 
-Active model、Reasoning radios、Subagent model/effort；Provider Test/Edit/Delete/Add；Provider 表单所有 Onboarding Model 字段以及 Cancel/Save。
+Active model, Reasoning radios, and Subagent model/effort; Provider Test/Edit/Delete/Add. The Provider form contains all fields from the Onboarding Model page plus Cancel and Save.
 
 ### Agent
 
-Framework card、Switch、Install source、Install/Cancel/Retry、Install log、Repair、Sign in/auth、Import config/home、Uninstall confirmation。
+Framework card, Switch, Install source, Install/Cancel/Retry, Install log, Repair, Sign in/auth, Import config/home, and Uninstall confirmation.
 
 ### Permissions
 
-Default profile；scope filter；grant scope link、connector hint、Revoke 与确认；不完整 store 警告/刷新。
+Default profile, scope filter, grant scope link, connector hint, Revoke and confirmation, and incomplete-store warning or refresh.
 
 ### Runtimes
 
-Python/R；环境 Enable、Add interpreter、Download/setup、Repair、Allow package install、Packages、Filter、Add/Install/Remove package、Disable/Uninstall 与确认。
+Python/R; environment Enable, Add interpreter, Download/setup, Repair, Allow package install, Packages, Filter, Add/Install/Remove package, Disable/Uninstall, and confirmation.
 
 ### Storage
 
-Application storage Reveal/Repair；Data location Change、Path、Browse、检查、Migrate/Adopt/Cancel；迁移进度 Cancel/Retry/Restart/Discard；Disk usage 分类展开。
+Application storage Reveal/Repair; Data location Change, Path, Browse, checks, Migrate/Adopt/Cancel; migration progress Cancel/Retry/Restart/Discard; expandable Disk usage categories.
 
 ### General
 
-Task notifications、Theme radios、App icon radios、close behavior、GitHub token Open/Input/Save/Clear、About/Check updates/安装更新。
+Task notifications, Theme radios, App icon radios, close behavior, GitHub token Open/Input/Save/Clear, and About/Check updates/install update.
 
 ### Remote control
 
-Start/Stop/Refresh、Copy/Open URL、QR；Remote.It setup/retry/disconnect；Trusted browser Revoke；Pair request Reject/Allow once/Always trust。
+Start/Stop/Refresh, Copy/Open URL, and QR; Remote.It setup/retry/disconnect; Trusted browser Revoke; pairing request Reject/Allow once/Always trust.
 
 ### Archived
 
-Project Manage、Restore project、Delete project；Session Restore/Delete；删除确认 Cancel/Confirm。
-
+Project Manage, Restore project, Delete project; Session Restore/Delete; deletion confirmation Cancel/Confirm.

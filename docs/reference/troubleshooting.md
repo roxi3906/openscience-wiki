@@ -1,65 +1,65 @@
 ---
 sidebar_position: 5
-title: 故障排查
+title: Troubleshooting
 ---
 
-# 故障排查
+# Troubleshooting
 
-## Agent 无法启动或会话停住
+## Agent does not start or the session stops progressing
 
-1. Settings → Agent 确认 Active runtime 为 Ready，并查看版本/Install log。
-2. 必要时 `Repair`；若要卸载，先切换到另一个 runtime。
-3. Settings → Model 对活动 Provider 执行 `Test connection`。
-4. 检查 session 是否为 `Waiting for permission`、等待 Plan 或 elicitation。
-5. 网络正常但 Provider 不通时检查 proxy/VPN/firewall 和 Base URL/API format。
+1. In Settings → Agent, confirm that the Active runtime is Ready and inspect its version and Install log.
+2. Use `Repair` if needed. Switch to another runtime before uninstalling the current one.
+3. In Settings → Model, run `Test connection` for the active Provider.
+4. Check whether the session is `Waiting for permission`, waiting for Plan approval, or waiting for elicitation.
+5. If the network works but the Provider does not, inspect the proxy, VPN, firewall, Base URL, and API format.
 
-## Provider 测试失败
+## Provider test fails
 
-- 核对 API key 是否属于该 endpoint/区域。
-- Custom Base URL 与 API format 是否匹配；不要把 Chat Completions 当 Responses。
-- Model ID 是否真实存在且账号有权限。
-- 本地 mock/自签名服务需正确 CA；不要通过关闭 TLS 验证长期绕过。
-- Context window、Images、Reasoning 声明不会修复认证失败。
+- Confirm that the API key belongs to the configured endpoint and region.
+- Match a custom Base URL to the correct API format; Chat Completions and Responses are not interchangeable.
+- Confirm that the Model ID exists and that the account may access it.
+- A local mock or self-signed service needs the correct CA. Do not make disabled TLS verification a permanent workaround.
+- Context window, Images, and Reasoning declarations do not fix authentication errors.
 
-## Python/R 或包安装失败
+## Python/R or package installation fails
 
-- Runtimes 中环境是否 Enabled 且 executable 仍存在。
-- App-managed setup 是否完整；失败用 Retry/Repair。
-- 用户环境安装必须打开 `Allow package install`。
-- Network → Package mirror 与 CA bundle 是否正确。
-- 安装后重启 kernel；不要混用 UI package manager 和 Notebook 内 pip/install.packages。
-- 磁盘空间不足时先检查 Storage → Disk usage。
+- In Runtimes, check that the environment is Enabled and its executable still exists.
+- If app-managed setup is incomplete, use Retry or Repair.
+- Enable `Allow package install` before writing to a user environment.
+- Check Network → Package mirror and the CA bundle.
+- Restart the kernel after installation. Do not mix the interface package manager with pip or `install.packages()` inside the Notebook.
+- If disk space is low, inspect Storage → Disk usage first.
 
-## 文件不能预览
+## File does not open in Preview
 
-- 确认上传完成、扩展名/MIME 正确。
-- 尝试模态预览与 split view；失败仍可 Download。
-- 大型/未知二进制可能只有 fallback。
-- Office/PDF renderer 失败时关闭预览重开；仍失败则下载用原生应用。
-- 图片被 Composer 拒绝时换用支持 Images 的 model 后重新附加。
+- Confirm that the upload finished and that its extension or MIME type is correct.
+- Try both modal Preview and split view. Download remains available if rendering fails.
+- A large or unknown binary file may offer only the fallback view.
+- If the Office or PDF renderer fails, close and reopen Preview. If it still fails, download the file and use its native application.
+- If Composer rejects an image, switch to a model that supports Images and attach it again.
 
-## 权限一直等待
+## Permission request keeps waiting
 
-- 查看底部 Permission panel 是否被窗口高度遮挡；拖动 Resize。
-- 处理主 agent 与 subagent 的所有 pending 请求。
-- 选择 Allow once 或 Deny；只关弹层不会给 agent 答案。
-- 若 grant 应已存在，Settings → Permissions 检查 scope 是否只覆盖别的 project/session。
+- Check whether the Permission panel at the bottom is hidden by the window height; drag Resize if necessary.
+- Respond to all pending requests from the main agent and subagents.
+- Choose Allow once or Deny. Closing the surface does not answer the agent.
+- If a grant should exist, use Settings → Permissions to check whether its scope covers a different project or session only.
 
-## Remote control 无法访问
+## Remote control is unreachable
 
-- 桌面应用必须保持运行。
-- 从面板重新 Copy 当前 URL，旧 token/地址可能失效。
-- 本机可打开但其他设备不可打开时检查网段、防火墙或 Remote.It 状态。
-- 新浏览器需要在 Pairing requests 核对六位 code 并批准。
-- 被 Revoke 的浏览器要重新配对。
+- Keep the desktop application running.
+- Copy the current URL from the panel again; an old token or address may have expired.
+- If the URL works locally but not on another device, check the local network, firewall, and Remote.It state.
+- For a new browser, compare the six-digit code under Pairing requests and approve it.
+- A revoked browser must pair again.
 
-## Storage 迁移异常
+## Storage migration reports an error
 
-- 不要手动继续搬动部分目录。
-- 保持原/目标磁盘在线，按 modal 提供的 Retry/Restart/Discard 操作。
-- Adopt 前确认目标是完整 Open Science 数据根目录。
-- Application storage 不可写与 Data location 是两个问题，分别修复。
+- Do not continue moving a partial directory manually.
+- Keep the source and target disks connected, then choose Retry, Restart, or Discard as offered by the dialog.
+- Before Adopt, confirm that the target is a complete Open Science data root.
+- An unwritable Application storage directory and a Data location failure are separate problems; fix each in its own panel.
 
-## 收集问题证据
+## Collect evidence for a report
 
-记录应用版本、操作系统、active model/framework、失败 session、准确时间、错误文本与相关截图。可公开 issue 前移除 API key、访问 token、绝对用户名路径、研究敏感数据。仓库：[aipoch/open-science](https://github.com/aipoch/open-science/issues)。
+Record the application version, operating system, active model and framework, failed session, exact time, error text, and related screenshots. Before filing a public issue, remove API keys, access tokens, absolute paths containing user names, and sensitive research data. Repository: [aipoch/open-science](https://github.com/aipoch/open-science/issues).

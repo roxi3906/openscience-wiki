@@ -1,37 +1,36 @@
 ---
 sidebar_position: 2
-title: 文件、格式与命名
+title: Files, formats, and naming
 ---
 
-# 文件、格式与命名
+# Files, formats, and naming
 
-## 输入与预览
+## Input and Preview
 
-Open Science 可把任意允许大小的文件作为项目资源管理，但“可上传”不等于“可内嵌预览”或“模型可理解”。已实现的专用 renderer 包括 Code、Text、CSV、JSON、Markdown、HTML、Image、TIFF、PDF、Office、FASTA、Molecule 与 PDB；其余进入 fallback 并提供下载。
+Open Science can manage any file within its size limits as a project resource, but upload support does not guarantee an inline Preview or model understanding. Dedicated renderers are available for Code, Text, CSV, JSON, Markdown, HTML, Image, TIFF, PDF, Office, FASTA, Molecule, and PDB. Other types use a fallback view with a download option.
 
-| 类型 | 推荐扩展名 | 注意 |
+| Type | Suggested extensions | Notes |
 | --- | --- | --- |
-| Python/R/脚本 | `.py`、`.r`、`.sh`、`.js`、`.ts` | 预览不会自动执行 |
-| 表格 | `.csv`、Office spreadsheet | CSV 最便于文本追踪；大型表格预览会限量 |
-| 文档 | `.md`、`.txt`、`.pdf`、DOCX | PDF/Office 使用专用资源生命周期 |
-| 图片 | `.png`、`.jpg`、`.webp`、`.gif`、`.tif/.tiff` | Composer 需模型声明 Images；TIFF 有独立 worker |
-| 结构 | `.pdb` 与受支持分子格式 | 三维视图只用于检查，不替代验证软件 |
-| 序列 | FASTA 常用扩展名 | 保持标准 header/sequence 格式 |
-| 数据/元数据 | `.json`、`.html` | 不可信 HTML 不应获得应用权限 |
-| Notebook | `.ipynb` | Session Notebook 在有可转换 cells 时导出 |
+| Python, R, and scripts | `.py`, `.r`, `.sh`, `.js`, `.ts` | Preview never executes a script automatically |
+| Tables | `.csv`, Office spreadsheet | CSV is easiest to track as text; large-table Preview is limited |
+| Documents | `.md`, `.txt`, `.pdf`, DOCX | PDF and Office use managed resource lifecycles |
+| Images | `.png`, `.jpg`, `.webp`, `.gif`, `.tif/.tiff` | Composer requires a model that declares Images support; TIFF uses a separate worker |
+| Structures | `.pdb` and supported molecule formats | The 3D view is for inspection, not a replacement for validation software |
+| Sequences | Common FASTA extensions | Keep the standard header and sequence format |
+| Data and metadata | `.json`, `.html` | Untrusted HTML must not receive application privileges |
+| Notebook | `.ipynb` | The Session Notebook can export when it has convertible cells |
 
-## 文件名与版本
+## File names and versions
 
-- 使用稳定、描述性的 ASCII/Unicode 文件名并保留扩展名。
-- 在文件名中加入样本/阶段，而不是把全部版本历史编码进名称。
-- Generated artifact 的 `vN` 和 immutable ID 才是 provenance 版本；同名 upload 没有自动等价关系。
-- 下载时如果操作系统处理重名，核对实际保存名与 hash/内容。
+- Use stable, descriptive ASCII or Unicode file names and keep the extension.
+- Put the sample or processing stage in the file name instead of encoding the entire history there.
+- A generated artifact's `vN` and immutable ID define its provenance version. An upload with the same name is not automatically equivalent.
+- If the operating system renames a duplicate during download, verify the saved name against its hash or contents.
 
-## 大文件与二进制
+## Large and binary files
 
-超出即时预览能力时应下载或使用外部工具；不要把预览缩略图当作完整数据。远程计算生成的大结果应通过受管理 harvest 导入项目，保留关联的 execution log。
+Download files that exceed immediate Preview capacity or inspect them with an external tool. A Preview thumbnail is not the full dataset. Large results from remote computation should return through managed harvesting so the project keeps the related execution log.
 
-## 图片模型限制
+## Image-model limits
 
-Provider 的 `Supports images` 声明必须与真实 API 一致。若当前模型不支持图片，Composer 会阻止图片 attachment；换模型后重新附加。文件已经在 Project Files 时，能否由模型读取仍由请求准备与模型能力决定。
-
+A Provider's `Supports images` setting must match the real API. Composer blocks image attachments when the active model cannot accept them; attach the image again after switching models. A file may already exist in Project Files, but model access still depends on request preparation and model capabilities.

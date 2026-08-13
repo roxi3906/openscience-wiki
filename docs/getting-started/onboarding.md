@@ -1,62 +1,59 @@
 ---
 sidebar_position: 2
-title: 首次引导
+title: First-time Setup
 ---
 
-# 首次引导
+# First-time Setup
 
-首次启动包含五步：Environment、Agent、Model、Notebook、Location。底部 `Back` 和主操作按钮负责移动步骤；只有当前步骤达到可继续条件时，主操作才可用。
+The first-run wizard has five pages: Environment, Agent, Model, Notebook, and Location. `Back` and the primary action at the bottom move between pages. The primary action remains unavailable until the current page meets its requirements.
 
 ## 1. Environment
 
-![Environment 检查](/img/open-science/onboarding-01-environment.png)
+![Environment checks](/img/open-science/onboarding-01-environment.png)
 
-页面检查 System、Storage、Secure vault 和 Install network。每一行显示状态与解释；若某项失败，按行内建议修复后重新检查。这里不会要求输入模型密钥。
+This page checks System, Storage, Secure vault, and Install network. Each row reports its status and explains the result. Fix any failed requirement, then run the check again. The page doesn't ask for a model key.
 
 ## 2. Agent runtime
 
-![Agent runtime 选择](/img/open-science/onboarding-02-agent-runtime.png)
+![Agent runtime selection](/img/open-science/onboarding-02-agent-runtime.png)
 
-每张卡代表一个 agent framework。已检测到的 runtime 显示版本并可设为 Active；未安装项提供 `Install`。选择 Active 会决定新会话由哪个后端驱动。后续可在 Settings → Agent 切换、修复、导入配置或卸载非活动 runtime。
+Each card represents an agent framework. A detected runtime shows its version and can become Active; an unavailable runtime offers `Install`. The active choice drives new sessions. You can later switch, repair, import settings for, or uninstall an inactive runtime under Settings → Agent.
 
 ## 3. Model provider
 
-![空的 Provider 表单](/img/open-science/onboarding-03-model-provider-empty.png)
+![Empty provider form](/img/open-science/onboarding-03-model-provider-empty.png)
 
-Provider 表单的主要字段如下：
-
-| 输入/按钮 | 含义与操作 |
+| Input or button | Meaning and action |
 | --- | --- |
-| `Provider type` | 选择内置 Provider 或 Custom；不同类型会改变后续字段 |
-| `Provider name` | 自定义列表中显示的名称 |
-| `Base URL` / `Endpoint` | Provider API 根地址或区域端点；不要填到具体模型路径之外 |
-| `API format` | Custom Provider 可选 Chat Completions、Responses 等受支持格式 |
-| `API key` | 只在本机安全存储；编辑时不会以明文重新显示 |
-| `Model` | Provider 实际接受的模型标识，不是任意显示名 |
-| `Context window` | 模型上下文上限；影响 Context 使用率和压缩阈值 |
-| Images / Reasoning | 声明模型是否支持图片和推理强度；必须与后端能力一致 |
-| `Test connection` | 保存前发起最小连接测试；成功不等于所有模型权限都可用 |
-| `Add provider` / `Save` | 校验通过后写入 Provider 列表 |
+| `Provider type` | Choose a built-in provider or Custom. The remaining fields change with the type |
+| `Provider name` | Set the name shown in provider lists |
+| `Base URL` / `Endpoint` | Enter the API root or regional endpoint; don't append an unrelated model route |
+| `API format` | For a Custom provider, choose a supported format such as Chat Completions or Responses |
+| `API key` | Stored securely on this computer; an existing key isn't shown again as plain text |
+| `Model` | Enter the model identifier accepted by the provider, not an arbitrary display name |
+| `Context window` | Set the model's context limit; this affects context usage and compaction thresholds |
+| Images / Reasoning | Declare the model's image and reasoning support; the values must match the backend |
+| `Test connection` | Send a small connection test before saving; success doesn't prove access to every model |
+| `Add provider` / `Save` | Write the provider after validation passes |
 
-![完成连接验证的 Provider](/img/open-science/onboarding-03-model-provider-configured.png)
+![Provider after a successful connection test](/img/open-science/onboarding-03-model-provider-configured.png)
 
 :::warning
-不要把 API key 写入项目描述、Agent Context、对话或截图。Provider 表单会遮蔽已保存密钥；GitHub token、Connector headers 同样按秘密处理。
+Never put an API key in a project description, Agent Context, conversation, or screenshot. The provider form masks stored keys. Treat GitHub tokens and Connector headers the same way.
 :::
 
 ## 4. Notebook runtime
 
-![Notebook runtime 设置](/img/open-science/onboarding-04-notebook-runtime.png)
+![Notebook runtime settings](/img/open-science/onboarding-04-notebook-runtime.png)
 
-Python 和 R 各自显示检测结果。`Add interpreter` 选择已有解释器，`Download and set up` 安装应用管理环境；语言开关决定 agent 是否可使用该 runtime，`Packages` 打开环境包管理。若暂时只做资料检索，可以先不启用 Notebook，之后在 Settings → Runtimes 补充。
+Python and R each show a detection result. `Add interpreter` selects an existing interpreter, while `Download and set up` installs an app-managed environment. A language switch decides whether the agent can use that runtime. `Packages` opens environment package management. If your first task only needs literature work, leave notebooks off and configure them later under Settings → Runtimes.
 
 ## 5. Data location
 
-![Data location 设置](/img/open-science/onboarding-05-data-location.png)
+![Data location setting](/img/open-science/onboarding-05-data-location.png)
 
-`Location` 输入/展示项目数据根目录，`Browse` 打开系统目录选择器，`Back` 返回 Notebook，`Finish` 写入设置并进入主页。确认目标磁盘有足够空间且会被备份；不要选择只读、短期挂载或自动清理目录。
+`Location` shows or accepts the project data root. `Browse` opens the system directory picker, `Back` returns to Notebook, and `Finish` saves the settings and opens the home page. Choose a disk with enough free space and a backup policy. Avoid read-only folders, temporary mounts, and folders that an automated cleanup job can erase.
 
-## 重新配置
+## Change the setup later
 
-完成引导后不需要重新运行 wizard：Model、Agent、Runtimes、Storage 分别对应上述设置。若数据目录损坏或应用配置目录不可写，Settings → Storage 会显示修复入口。
-
+You don't need to rerun the wizard. Model, Agent, Runtimes, and Storage map to the same choices. If the data root is damaged or the application configuration directory isn't writable, Settings → Storage displays repair actions.

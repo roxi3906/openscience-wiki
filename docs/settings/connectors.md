@@ -5,39 +5,38 @@ title: Connectors
 
 # Connectors
 
-![Connectors 面板](/img/open-science/settings-connectors.png)
+![Connectors panel](/img/open-science/settings-connectors.png)
 
-Connector 将 MCP server 暴露给 agent。内置项可启用；自定义项可新增、编辑、导入、导出和移除。运行 Connector tool 仍受 Permissions 与 connector policy 控制。
+A Connector exposes an MCP server to the agent. Built-in connectors can be enabled. Custom connectors can be added, edited, imported, exported, and removed. Connector tool calls remain subject to Permissions and the connector policy.
 
-## 列表
+## Connector list
 
-列表提供分类/状态筛选、Search、`Add connector` 与 `Import`。点击卡片或名称进入详情；开关启用/禁用；自定义项的 actions 包含 Edit、Export、Remove。OAuth 项会显示未连接、等待授权、已连接或过期，按提示重新连接。
+The list provides category and status filters, Search, `Add connector`, and `Import`. Select a card or name to open its details. Use the switch to enable or disable it. Actions for a custom connector include Edit, Export, and Remove. OAuth connectors show whether they are disconnected, awaiting authorization, connected, or expired; reconnect when prompted.
 
-## Add connector 表单
+## Add connector form
 
-| 输入 | 说明 |
+| Input | Description |
 | --- | --- |
-| `Connector type` | 本地 stdio 或远程 HTTP/SSE 类连接 |
-| `Display name` | 用户可见名称 |
-| `Connector ID` | 稳定标识；保存后用于 policy 与工具命名 |
-| `Description` | 说明提供哪些数据/动作 |
-| `Command` | stdio 启动程序（如 npx）；Custom 可填绝对 executable |
-| `Arguments` | 传给 command 的参数；按界面格式输入 |
-| `Environment variables` | 每行 `KEY=value`；秘密值不要出现在描述中 |
-| `Server URL` | 远程 MCP endpoint |
-| `Transport` | 选择远程传输协议 |
-| `Authentication` | None、OAuth 或 headers 等受支持方式 |
-| `OAuth scopes` | 空格分隔 scope |
-| `Authorization server URL` | 可留空自动发现，或显式指定 |
-| `Client metadata URL` | 动态客户端注册相关信息 |
-| `Headers` | 每行 header；API key/token 在此属于敏感信息 |
-| `I trust this connector` | 明确确认你信任其代码、服务和数据处理 |
+| `Connector type` | Choose a local stdio connection or a remote HTTP/SSE connection |
+| `Display name` | The user-facing name |
+| `Connector ID` | A stable identifier used in policy and tool names after saving |
+| `Description` | The data and actions the connector provides |
+| `Command` | The stdio launcher, such as npx; Custom accepts an absolute executable path |
+| `Arguments` | Arguments passed to the command, entered in the format shown by the form |
+| `Environment variables` | One `KEY=value` pair per line; do not put secret values in the description |
+| `Server URL` | The remote MCP endpoint |
+| `Transport` | The remote transport protocol |
+| `Authentication` | A supported method such as None, OAuth, or headers |
+| `OAuth scopes` | Space-separated scopes |
+| `Authorization server URL` | Leave blank for discovery, or specify it directly |
+| `Client metadata URL` | Information used for dynamic client registration |
+| `Headers` | One header per line; API keys and tokens entered here are sensitive |
+| `I trust this connector` | Confirm that you trust its code, service, and data handling |
 
-`Cancel` 返回列表，`Add/Save` 在校验通过后写入。没有勾选 Trust 时高风险自定义 Connector 不可提交。
+`Cancel` returns to the list. `Add` or `Save` writes the connector after validation. A high-risk custom connector cannot be submitted until Trust is selected.
 
-## 详情、模板与导入导出
+## Details, templates, import, and export
 
-Detail 展示 transport、命令/URL、auth、状态、capabilities 与 policy，提供 Test/Reconnect/Edit/Export/Remove。Import 先选择包/配置，`Configuration preview` 与 `Configuration diagnostics` 展示将写入的字段；错误必须修复后才能 `Import`。Export 生成可共享模板时不会把本机秘密当作普通文本外泄；导入者仍需补充凭据。
+Detail shows the transport, command or URL, authentication, status, capabilities, and policy. It may offer Test, Reconnect, Edit, Export, and Remove. Import starts with a package or configuration file. `Configuration preview` and `Configuration diagnostics` show the fields that will be written; all errors must be fixed before `Import` becomes available. An exported sharing template does not expose local secrets as plain text, so each importer must supply their own credentials.
 
-Connector 第一次执行可能弹出 Deny、Allow once、Allow for session、project 或 global。宽 scope 会增加后续自动调用范围，应优先 once/session。
-
+The first connector call may ask you to choose Deny, Allow once, Allow for session, project, or global. A broader scope permits more automatic calls later, so prefer once or session unless a persistent grant is necessary.

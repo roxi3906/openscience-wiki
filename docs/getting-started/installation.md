@@ -1,22 +1,22 @@
 ---
 sidebar_position: 1
-title: 安装与运行
+title: Install and Run
 ---
 
-# 安装与运行
+# Install and Run
 
-普通用户应优先使用 GitHub Releases 提供的桌面安装包。贡献者或需要调试最新版功能的用户可以从源码启动。Open Science 是 Electron 应用，渲染层同时支持受令牌保护的本地 Web 访问。
+Most users should install the desktop package from GitHub Releases. Contributors, or anyone testing the newest code, can run the app from source. Open Science is an Electron application; its renderer also supports token-protected local browser access.
 
-## 桌面安装
+## Install the desktop app
 
-1. 打开 [Open Science Releases](https://github.com/aipoch/open-science/releases)。
-2. 选择与你的操作系统和 CPU 架构对应的安装包。
-3. 启动应用；首次运行会进入五步 Onboarding。
-4. 若系统拦截未签名应用，请只从 AIPOCH 官方 GitHub 仓库重新下载，并按操作系统安全提示确认来源。
+1. Open [Open Science Releases](https://github.com/aipoch/open-science/releases).
+2. Download the package that matches your operating system and CPU architecture.
+3. Start the app. A five-step setup wizard opens on the first run.
+4. If the operating system blocks an unsigned app, download it again from the official AIPOCH GitHub repository and follow the platform's security prompt only after checking the source.
 
-## 从源码运行
+## Run from source
 
-要求：Git、Node.js 22、npm，以及至少一个受支持的 agent framework。仓库会在安装阶段生成 Prisma Client、应用补丁并准备 Electron 原生依赖。
+You need Git, Node.js 22, npm, and at least one supported agent framework. During installation, the repository generates the Prisma Client, applies app patches, and prepares Electron native dependencies.
 
 ```bash
 git clone https://github.com/aipoch/open-science.git
@@ -25,34 +25,33 @@ npm install
 npm run dev
 ```
 
-构建生产包前先运行：
+Before packaging a production build, run:
 
 ```bash
 npm run build
 ```
 
-`npm run build` 会依次完成 TypeScript 检查以及 renderer、preload、main 三个 Electron 构建目标。若只想验证 Web/headless 入口，应使用仓库已有的 headless 参数和单独的数据目录，避免测试数据进入默认存储。
+`npm run build` checks TypeScript, then builds the Electron renderer, preload, and main targets. If you only need to test the web or headless entry point, use the repository's existing headless arguments with a separate data directory. That keeps test data out of the default store.
 
-## 首次运行需要的外部能力
+## External services and runtimes
 
-| 能力 | 是否必需 | 用途 |
+| Capability | Required? | Purpose |
 | --- | --- | --- |
-| OpenCode、Claude Agent 或 Codex | 至少一个 | 驱动对话式 agent session |
-| 模型 Provider 与 API key | 是 | 生成计划、回答和工具调用 |
-| Python / R | 可选 | Notebook 代码执行；可以使用检测到的系统环境或应用管理环境 |
-| 网络 | 推荐 | 安装运行时、连接 Provider、GitHub、远程服务和 MCP Connectors |
-| SSH 主机 | 可选 | Compute 面板中的远程任务与结果回收 |
+| OpenCode, Claude Agent, or Codex | At least one | Runs conversational agent sessions |
+| Model provider and API key | Yes | Produces plans, answers, and tool calls |
+| Python or R | Optional | Runs notebook code; use a detected system environment or an app-managed environment |
+| Network access | Recommended | Installs runtimes and connects providers, GitHub, remote services, and MCP Connectors |
+| SSH host | Optional | Runs remote jobs and retrieves results through the Compute panel |
 
-## 本地数据
+## Local data
 
-默认数据目录由引导页显示并可修改。该目录保存项目、artifact 和其他应用数据；私有配置、密钥密文与运行状态位于应用配置目录。不要把数据目录与源码仓库混用，也不要在应用运行中手动搬动数据库。迁移请使用 [Storage 面板](../settings/storage-general.md#storage存储)。
+The setup wizard shows the default data location and lets you change it. This location stores projects, artifacts, and other app data. Private configuration, encrypted secrets, and runtime state live in the application configuration directory. Don't mix the data location with the source repository, and don't move the database manually while the app is running. Use the [Storage panel](../settings/storage-general.md#storage) for migrations.
 
-## 启动失败的第一轮检查
+## First checks when startup fails
 
-- `node --version` 与 `npm --version` 是否可用。
-- `npm install` 是否完整结束；网络中断后可直接重试。
-- Onboarding 的 Environment 页是否全部为 Ready。
-- Agent 页是否至少有一个 runtime 显示 Active/Ready。
-- Model 页的 `Test connection` 是否成功。
-- 端口、代理或证书软件是否拦截 Provider 与本地 Remote control。
-
+- Confirm that `node --version` and `npm --version` work.
+- Make sure `npm install` finished. If the network interrupted it, run the command again.
+- Check that every required item on the setup Environment page says Ready.
+- Confirm that at least one runtime on the Agent page says Active or Ready.
+- Run `Test connection` on the Model page.
+- Check whether a proxy, certificate tool, or occupied port blocks the provider or local Remote control service.

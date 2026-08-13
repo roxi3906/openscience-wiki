@@ -1,71 +1,70 @@
 ---
 sidebar_position: 2
-title: 对话与输入区
+title: Conversation and Composer
 ---
 
-# 对话与输入区
+# Conversation and Composer
 
-工作区中部包含 Conversation log 和 Composer。消息发送后，agent 的文本、计划、工具调用、搜索、文件与 provenance 结果都会按时间进入同一条可审计时间线。
+The middle of the workspace contains the Conversation log and Composer. After a request starts, agent text, plans, tool calls, searches, files, and provenance results enter the same time-ordered record.
 
-## Composer 输入
+## Composer input
 
-`Ask anything` 支持多行文本。输入为空且光标位于开头时，`↑`/`↓` 浏览历史提示词；`/` 触发 Skill 建议，`@` 引用项目文件/artifact，`⌘K`/`Ctrl+K` 搜索。发送中输入区会禁用或切换为停止控制，防止并发修改同一 active turn。
+`Ask anything` accepts multiple lines. If the field is empty and the cursor sits at the beginning, `↑` and `↓` move through prompt history. `/` suggests Skills, `@` references a project file or artifact, and `⌘K` or `Ctrl+K` opens search. During a request, the composer may become unavailable or change to a stop control so that another prompt can't modify the active turn.
 
-### 左侧 `+` 菜单
+### The `+` menu
 
-![添加菜单](/img/open-science/composer-add-menu.png)
+![Add menu](/img/open-science/composer-add-menu.png)
 
-- `Attach files`：从操作系统选择新文件并上传到项目。
-- `Your files`：从本项目已有上传与生成文件中选择；支持搜索/筛选。
-- `Review`：在存在可复核运行时请求 reviewer；不可用时显示禁用。
-- `Context`：查看上下文窗口组成与趋势；没有 session 时禁用。
+- `Attach files`: choose and upload new files from the operating system.
+- `Your files`: select existing uploads or generated files in the current project; search and filters remain available.
+- `Review`: request a reviewer when a reviewable run exists; otherwise the item stays disabled.
+- `Context`: inspect context-window contents and trends. It stays disabled until a session exists.
 
 ### Agent controls
 
 ![Agent controls](/img/open-science/composer-agent-controls.png)
 
-该菜单集中配置权限模式、Auto-review 和 Specialist/Delegation 能力。选择只影响后续请求；运行中的请求仍按启动时策略完成。
+This menu groups the permission mode, Auto-review, Specialist selection, and Delegation controls. A change applies to later requests. A request already running keeps the policy with which it started.
 
-![权限模式](/img/open-science/composer-permission-modes.png)
+![Permission modes](/img/open-science/composer-permission-modes.png)
 
-| 模式 | 行为 |
+| Mode | Behavior |
 | --- | --- |
-| `Ask` | 高风险工具执行前显示 Allow/Deny，是默认与推荐模式 |
-| `Auto-approve edits` | 自动批准受管理工作区内的编辑，其余敏感操作仍询问 |
-| `Full access` | 尽可能自动授权；只应在可恢复、隔离项目中短时使用 |
+| `Ask` | Show Allow or Deny before risky tool calls; this is the default and safest general setting |
+| `Auto-approve edits` | Approve edits inside the managed workspace, but continue asking about other sensitive actions |
+| `Full access` | Approve most operations automatically; use it briefly and only in an isolated, recoverable project |
 
-### 模型与推理强度
+### Model and reasoning effort
 
-![模型选择器](/img/open-science/composer-model-picker.png)
+![Model picker](/img/open-science/composer-model-picker.png)
 
-模型按钮显示当前模型和推理强度。模型列表来自 Settings → Model；改变后用于后续请求。若模型与 agent framework 不兼容，界面会警告或阻止选择。
+The model button shows the current model and reasoning effort. Models come from Settings → Model, and a change applies to later requests. If the model doesn't work with the selected agent framework, Open Science warns you or prevents the selection.
 
-![推理强度](/img/open-science/composer-reasoning-effort.png)
+![Reasoning effort](/img/open-science/composer-reasoning-effort.png)
 
-可选 `Default`、`Low`、`Medium`、`High`、`XHigh`、`Max`；实际支持级别取决于 Provider，某些 framework 会近似不支持的级别。
+Available levels are `Default`, `Low`, `Medium`, `High`, `XHigh`, and `Max`. Provider support varies, and an agent framework may approximate a level it can't pass through exactly.
 
-### 发送按钮
+### Send controls
 
-主箭头立即发送；旁边 `More send options` 打开：
+The main arrow sends immediately. `More send options` opens the menu below.
 
-![发送选项](/img/open-science/composer-send-options.png)
+![Send options](/img/open-science/composer-send-options.png)
 
-- `Plan first`：要求 agent 先给出可审批计划，再进入执行。
-- `Side chat`：在不改变主线的旁路会话中发送；没有可分支上下文时禁用。
-- `Branch`：从当前消息/修订创建新分支；新会话或不支持的状态下禁用。
+- `Plan first`: ask the agent for an approval-ready plan before execution.
+- `Side chat`: send to a parallel discussion that doesn't alter the main path; it stays disabled without branchable context.
+- `Branch`: continue from the current message or revision on a new branch; it stays disabled in a new or unsupported state.
 
-## 消息操作
+## Message actions
 
-![完成的对话](/img/open-science/conversation-completed.png)
+![Completed conversation](/img/open-science/conversation-completed.png)
 
-用户消息提供 `Copy message`、`Edit message`。编辑并确认后生成修订，不直接抹除旧版本；`Previous/Next message revision` 与 `2/2` 指示器用于回看。
+User messages provide `Copy message` and `Edit message`. Editing and confirming creates a revision instead of erasing the earlier text. Use `Previous/Next message revision` and the `2/2` indicator to inspect each revision.
 
-![编辑消息](/img/open-science/message-editing.png)
-![消息修订](/img/open-science/message-revisions.png)
+![Editing a message](/img/open-science/message-editing.png)
+![Message revisions](/img/open-science/message-revisions.png)
 
-助手消息显示完成时间、Elapsed 和 `Usage`。Usage 有数据时展示 token/上下文使用；fixture 或 Provider 未返回 usage 时按钮会标记 unavailable。长对话底部的 `Scroll to end` 回到最新事件。
+Assistant messages show completion time, Elapsed, and `Usage`. If usage data exists, the control reports token and context figures. A fixture or provider that omits usage marks it unavailable. `Scroll to end` returns a long conversation to its newest event.
 
-## 运行活动
+## Run activity
 
-时间线可展示工具名称、命令/代码、参数详情、diff、输出、Web search、计划进度、context compaction、handoff、subagent 与 elicitation。折叠行点击后展开；复制按钮复制代码或输出；错误行可进入 `Report error`。在执行结果不确定时，应先展开详情，再决定授权下一步。
-
+The timeline can show tool names, commands or code, parameter details, diffs, output, web searches, plan progress, context compaction, handoffs, subagents, and elicitation. Select a collapsed row to open it. Copy controls copy code or output, while an error row can open `Report error`. When an execution result looks uncertain, inspect its details before approving the next request.

@@ -1,41 +1,40 @@
 ---
 sidebar_position: 7
-title: Permissions 与 Runtimes
+title: Permissions and Runtimes
 ---
 
-# Permissions 与 Runtimes
+# Permissions and Runtimes
 
-## Permissions（权限）
+## Permissions
 
-![Permissions 面板](/img/open-science/settings-permissions.png)
+![Permissions panel](/img/open-science/settings-permissions.png)
 
-`Default permission mode` 选择 Ask for approval、Auto-approve edits、Full access，语义与 Composer 相同。下面按 Registry writes、Local compute、Connectors、File operations、Skills、Built-in tools 显示持久 grant。
+`Default permission mode` offers Ask for approval, Auto-approve edits, and Full access, with the same meaning as in Composer. Saved grants appear below under Registry writes, Local compute, Connectors, File operations, Skills, and Built-in tools.
 
-- `Filter permissions by scope`：All、Global、Project、Session。
-- Grant 行：capability、qualifier、scope label；session scope 可点击 `Open Session: …`。
-- Connector policy hint：点击进入相关 Connector。
-- `Revoke <capability>`：弹出确认后撤销该 grant；被更宽 global/project grant 覆盖时会提示。
-- Refresh/加载错误：某些 store 不完整时显示警告，避免误以为列表完整。
+- `Filter permissions by scope`: All, Global, Project, or Session.
+- Grant row: shows the capability, qualifier, and scope label. A session scope can link to `Open Session: …`.
+- Connector policy hint: opens the related Connector.
+- `Revoke <capability>`: revoke the grant after confirmation. A notice appears if a broader global or project grant still covers it.
+- Refresh or load error: when a store is incomplete, a warning prevents you from mistaking the visible list for the full grant set.
 
-撤销只影响后续请求；已经执行的操作不会回滚。Full access 等价于命令和网络也不提示，除隔离环境外不建议长期作为默认。
+Revocation applies only to later requests; it does not reverse finished operations. Full access also removes prompts for commands and network calls. It is not a suitable long-term default outside an isolated environment.
 
-## Runtimes（运行时）
+## Runtimes
 
-![Runtimes 面板](/img/open-science/settings-runtimes.png)
+![Runtimes panel](/img/open-science/settings-runtimes.png)
 
-`Notebook runtimes` 下分 Python 与 R。每种语言包含 App-managed 环境和用户解释器：
+`Notebook runtimes` is divided into Python and R. Each language can use an app-managed environment or a user interpreter:
 
-| 控件 | 行为 |
+| Control | Behavior |
 | --- | --- |
-| `Enable <environment>` | 让 agent 可以选择该环境 |
-| `Add interpreter` | 浏览/填写已有 Python 或 R executable |
-| `Download and set up` | 安装应用管理环境并显示进度 |
-| `Allow package install` | 允许 Open Science 向该用户环境安装包；明确改变用户环境 |
-| `Packages` | 打开包列表与管理器 |
-| `Filter packages…` | 按名称过滤已安装包 |
-| Add/Install package | 输入包名/版本并安装；完成后按提示重启 kernel |
-| Remove/Uninstall | 确认后卸载包或非活动 runtime |
-| Repair/Retry | 重新检测失败的应用管理环境 |
+| `Enable <environment>` | Let the agent select this environment |
+| `Add interpreter` | Browse for or enter an existing Python or R executable |
+| `Download and set up` | Install an app-managed environment and show its progress |
+| `Allow package install` | Let Open Science install packages into this user environment, which explicitly changes it |
+| `Packages` | Open the package list and manager |
+| `Filter packages…` | Filter installed packages by name |
+| Add/Install package | Enter a package name and optional version, install it, then restart the kernel when prompted |
+| Remove/Uninstall | Remove a package or inactive runtime after confirmation |
+| Repair/Retry | Detect or repair a failed app-managed environment again |
 
-用户解释器的 package install 会写入你自己的环境，而非应用管理存储。不要在 Notebook cell 里绕过界面运行 `%pip`、`!pip`、`install.packages()` 或系统 installer；这样会破坏可追踪环境选择。R runtime 可按需延迟初始化，首次执行可能需要更长时间。
-
+Package installation for a user interpreter writes to your own environment, not app-managed storage. Do not bypass the interface by running `%pip`, `!pip`, `install.packages()`, or a system installer in a Notebook cell; doing so breaks tracked environment selection. An R runtime can initialize only when needed, so its first run may take longer.

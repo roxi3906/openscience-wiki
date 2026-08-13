@@ -1,41 +1,41 @@
 ---
 sidebar_position: 1
-title: 设置中心总览
+title: Settings overview
 ---
 
-# 设置中心总览
+# Settings overview
 
-从工作区左下 `Settings` 打开。左侧导航分为 Capabilities、Workspace、Remote access 与 Archived；顶部提供浏览历史、最大化和关闭。
+Open Settings from the lower-left corner of the workspace. The navigation is divided into Capabilities, Workspace, Remote access, and Archived. The top bar contains browsing history, maximize, and close controls.
 
-| 全局控件 | 行为 |
+| Global control | Behavior |
 | --- | --- |
-| `Back` / `Forward` | 在设置主面板与 Detail/Add/Import 等子视图间导航 |
-| 面包屑返回 | 从子视图返回所在主面板 |
-| `Maximize` / `Restore` | 在大对话框和全屏设置间切换 |
-| `Close settings` | 返回原项目/session，不丢失已成功保存的设置 |
-| `Dismiss settings error` | 关闭顶部错误提示；不会自动重试失败操作 |
-| 移动端导航按钮 | 打开/关闭 Settings 导航抽屉 |
+| `Back` / `Forward` | Move between a main Settings panel and its Detail, Add, or Import subviews |
+| Breadcrumb back button | Return from a subview to its main panel |
+| `Maximize` / `Restore` | Switch between a large dialog and full-screen Settings |
+| `Close settings` | Return to the original project and session without losing settings that were saved successfully |
+| `Dismiss settings error` | Close the error banner; the failed operation is not retried automatically |
+| Mobile navigation button | Open or close the Settings navigation drawer |
 
-![最大化的 Model 设置](/img/open-science/settings-model-maximized.png)
+![Maximized Model settings](/img/open-science/settings-model-maximized.png)
 
-## 13 个主面板
+## The 13 main panels
 
-| 分组 | 面板 | 管理内容 |
+| Group | Panel | What it manages |
 | --- | --- | --- |
-| Capabilities | Skills | Skill 包、开关、搜索、导入/创建 |
-|  | Connectors | 内置与自定义 MCP connector、OAuth、导入导出 |
-|  | Specialists | 专家身份、提示词、Skills/Connectors 能力 |
-|  | Compute | 本地/SSH 计算主机、资源、scratch、并发限制 |
-|  | Network | 联网状态与 Conda/pip package mirror |
-| Workspace | Model | Provider、active/subagent model、reasoning effort |
-|  | Agent | OpenCode/Claude/Codex runtime 与切换/安装/修复 |
-|  | Permissions | 默认模式与已持久化的 scope grants |
-|  | Runtimes | Python/R 环境、包安装与环境管理 |
-|  | Storage | 应用配置可写性、数据根目录迁移、磁盘占用 |
-|  | General | 通知、主题、图标、关闭行为、GitHub token、版本 |
-| Remote access | Remote control | 浏览器入口、配对、Remote.It、信任设备 |
-| — | Archived | 恢复或永久删除归档项目/session |
+| Capabilities | Skills | Skill packages, enable switches, search, import, and creation |
+|  | Connectors | Built-in and custom MCP connectors, OAuth, import, and export |
+|  | Specialists | Specialist identities, instructions, and Skill/Connector access |
+|  | Compute | Local and SSH hosts, resources, scratch space, and concurrency limits |
+|  | Network | Network status and Conda/pip package mirrors |
+| Workspace | Model | Provider, active and subagent models, and reasoning effort |
+|  | Agent | OpenCode, Claude, and Codex runtimes, including switch, install, and repair operations |
+|  | Permissions | Default mode and saved scope grants |
+|  | Runtimes | Python and R environments, package installation, and environment management |
+|  | Storage | Configuration write access, data-root migration, and disk usage |
+|  | General | Notifications, theme, app icon, close behavior, GitHub token, and version |
+| Remote access | Remote control | Browser access, pairing, Remote.It, and trusted devices |
+| — | Archived | Restore or permanently delete archived projects and sessions |
 
-:::info[保存方式]
-部分开关即时保存；复杂表单使用 `Save/Add/Import`。操作中出现 `Saving…`、`Testing…`、`Installing…` 时不要关闭应用。涉及迁移、卸载、删除或宽权限会有二次确认。
+:::info[How settings are saved]
+Some switches are saved immediately. Longer forms use `Save`, `Add`, or `Import`. Do not close the application while `Saving…`, `Testing…`, or `Installing…` is shown. Migration, uninstall, deletion, and broad-permission actions require confirmation.
 :::

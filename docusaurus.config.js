@@ -12,7 +12,7 @@ import {defaultLocale, localeConfigs, locales} from './i18n.config.mjs';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Open Science Wiki',
-  tagline: '面向可复现科研的本地优先 AI 工作台',
+  tagline: 'A local-first AI workspace for reproducible scientific research',
   // Same file aipoch.com serves at /favicon.ico — 16/32/48 PNG-in-ICO.
   favicon: 'img/aipoch-favicon.ico',
 
@@ -37,9 +37,8 @@ const config = {
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Keep the locale registry separate so more overseas languages can be added
+  // without changing the rest of the site configuration.
   i18n: {
     defaultLocale,
     locales,
@@ -82,13 +81,13 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Open Science 文档',
+            label: 'Open Science Docs',
           },
-          {to: '/docs/getting-started/installation', label: '安装', position: 'left'},
-          {to: '/docs/reference/troubleshooting', label: '排错', position: 'left'},
+          {to: '/docs/getting-started/installation', label: 'Install', position: 'left'},
           {
-            type: 'localeDropdown',
-            position: 'right',
+            to: '/docs/reference/troubleshooting',
+            label: 'Troubleshooting',
+            position: 'left',
           },
           {
             href: 'https://github.com/aipoch/open-science',
@@ -101,31 +100,31 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '文档',
+            title: 'Documentation',
             items: [
               {
                 label: 'Open Science',
                 to: '/docs/',
               },
               {
-                label: '完整控件索引',
+                label: 'Control index',
                 to: '/docs/reference/control-index',
               },
             ],
           },
           {
-            title: '项目',
+            title: 'Project',
             items: [
               {
                 label: 'Open Science',
                 href: 'https://github.com/aipoch/open-science',
               },
               {
-                label: 'Wiki 源码',
+                label: 'Wiki source',
                 href: 'https://github.com/aipoch/openscience-wiki',
               },
               {
-                label: '问题反馈',
+                label: 'Report an issue',
                 href: 'https://github.com/aipoch/open-science/issues',
               },
             ],
@@ -134,7 +133,7 @@ const config = {
             title: 'AIPOCH',
             items: [
               {
-                label: '官网',
+                label: 'Website',
                 href: 'https://aipoch.com',
               },
             ],
