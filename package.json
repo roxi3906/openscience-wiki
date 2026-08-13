@@ -5,7 +5,12 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start:zh": "docusaurus start --locale zh-Hans",
+    "start:en": "docusaurus start --locale en",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "build": "npm run check:i18n && docusaurus build",
+    "build:zh": "npm run check:i18n && docusaurus build --locale zh-Hans",
+    "build:en": "npm run check:i18n && docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

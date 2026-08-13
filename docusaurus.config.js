@@ -5,18 +5,22 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import {defaultLocale, localeConfigs, locales} from './i18n.config.mjs';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Open Science Wiki',
-  tagline: 'A local-first AI workspace for reproducible scientific research',
+  tagline: '面向可复现科研的本地优先 AI 工作台',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    // Docusaurus 3.10.2's Rspack server bundle leaves route-registry
+    // require.resolveWeak calls untransformed. Keep the stable Webpack path.
+    faster: false,
   },
 
   // Set the production url of your site here
@@ -36,8 +40,9 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale,
+    locales,
+    localeConfigs,
   },
 
   presets: [
@@ -48,6 +53,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/aipoch/openscience-wiki/edit/main/',
+          editLocalizedFiles: true,
         },
         blog: false,
         theme: {
@@ -80,6 +86,10 @@ const config = {
           },
           {to: '/docs/getting-started/installation', label: '安装', position: 'left'},
           {to: '/docs/reference/troubleshooting', label: '排错', position: 'left'},
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
           {
             href: 'https://github.com/aipoch/open-science',
             label: 'Open Science GitHub',
