@@ -13,7 +13,8 @@ import {defaultLocale, localeConfigs, locales} from './i18n.config.mjs';
 const config = {
   title: 'Open Science Wiki',
   tagline: '面向可复现科研的本地优先 AI 工作台',
-  favicon: 'img/favicon.ico',
+  // Same file aipoch.com serves at /favicon.ico — 16/32/48 PNG-in-ICO.
+  favicon: 'img/aipoch-favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -74,6 +75,7 @@ const config = {
         logo: {
           alt: 'AIPOCH',
           src: 'img/aipoch-logo.svg',
+          srcDark: 'img/aipoch-logo-dark.svg',
         },
         items: [
           {
