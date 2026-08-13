@@ -318,7 +318,11 @@ div[class^='codeBlockTitle'] {
   font-family: var(--aip-mono); font-size: 10px;
   letter-spacing: .1em; text-transform: uppercase; color: var(--aip-muted);
 }
-.pagination-nav__label { font-weight: 700; letter-spacing: -.01em; }
+.pagination-nav__label { font-weight: 700; letter-spacing: -.01em; transition: color .15s; }
+/* The label inherits the link colour, which is yellow in dark mode. Keep it
+   white at rest so it reads as a heading, and let yellow signal the hover. */
+[data-theme='dark'] .pagination-nav__label { color: #fff; }
+[data-theme='dark'] .pagination-nav__link:hover .pagination-nav__label { color: var(--aip-yellow); }
 
 .breadcrumbs__link { border-radius: var(--aip-r-pill); font-size: 12.5px; }
 .breadcrumbs__item--active .breadcrumbs__link { background: rgba(236,212,76,.22); color: var(--aip-ink); }

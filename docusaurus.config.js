@@ -52,8 +52,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/aipoch/openscience-wiki/edit/main/',
-          editLocalizedFiles: true,
         },
         blog: false,
         theme: {
