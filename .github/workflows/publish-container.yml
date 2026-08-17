@@ -14,9 +14,16 @@ permissions:
   contents: read
   packages: write
 
+# Prevent an older main build from overwriting latest after a newer push.
+concurrency:
+  group: publish-container-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   publish:
     name: Build and publish
+    # A manual run may select another ref; only main may publish production tags.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
