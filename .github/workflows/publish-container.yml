@@ -41,10 +41,10 @@ jobs:
         uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: type=sha,format=long
+          flavor: latest=false
+          tags: type=sha,format=long,prefix=sha-
 
       - name: Build and push image
-        id: build
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
@@ -55,10 +55,30 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+  promote:
+    name: Promote latest
+    needs: publish
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: publish-container-latest
+      cancel-in-progress: false
+
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Promote current main image to latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          IMAGE_DIGEST: ${{ steps.build.outputs.digest }}
         run: |
           current_main_sha="$(
             curl --fail --silent --show-error \
@@ -68,12 +88,13 @@ jobs:
               "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/git/ref/heads/main" |
               jq --exit-status --raw-output '.object.sha'
           )"
+          source_image="${REGISTRY}/${IMAGE_NAME}:sha-${current_main_sha}"
 
-          if [[ "${current_main_sha}" != "${GITHUB_SHA}" ]]; then
-            echo "::notice::Skipping latest tag because ${GITHUB_SHA} is no longer the main head."
+          if ! docker buildx imagetools inspect "${source_image}" >/dev/null 2>&1; then
+            echo "::notice::Current main image ${source_image} is not available yet."
             exit 0
           fi
 
           docker buildx imagetools create \
             --tag "${REGISTRY}/${IMAGE_NAME}:latest" \
-            "${REGISTRY}/${IMAGE_NAME}@${IMAGE_DIGEST}"
+            "${source_image}"
