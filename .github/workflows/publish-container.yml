@@ -90,9 +90,32 @@ jobs:
           )"
           source_image="${REGISTRY}/${IMAGE_NAME}:sha-${current_main_sha}"
 
-          if ! docker buildx imagetools inspect "${source_image}" >/dev/null 2>&1; then
-            echo "::notice::Current main image ${source_image} is not available yet."
-            exit 0
+          inspect_output=""
+          inspect_status=1
+          for attempt in 1 2 3; do
+            if inspect_output="$(docker buildx imagetools inspect "${source_image}" 2>&1)"; then
+              inspect_status=0
+              break
+            else
+              inspect_status=$?
+            fi
+
+            case "${inspect_output}" in
+              *": not found"*|*"manifest unknown"*|*"MANIFEST_UNKNOWN"*)
+                echo "::notice::Current main image ${source_image} is not available yet."
+                exit 0
+                ;;
+            esac
+
+            if [[ "${attempt}" -lt 3 ]]; then
+              echo "::warning::Unable to inspect ${source_image}; retrying (${attempt}/3)."
+              sleep 5
+            fi
+          done
+
+          if [[ "${inspect_status}" -ne 0 ]]; then
+            printf '%s\n' "${inspect_output}" >&2
+            exit "${inspect_status}"
           fi
 
           docker buildx imagetools create \
