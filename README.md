@@ -6,11 +6,11 @@ English is the default language and is served from `/docs/`. Simplified Chinese 
 
 ## Content structure
 
-- `docs/` contains the English documentation source; `docs/intro.mdx` is the site homepage.
+- `docs/` contains the English documentation source; `docs/intro.mdx` is served at `/docs/intro`.
 - `i18n/<locale>/docusaurus-plugin-content-docs/current/` contains translated documentation with the same file structure as `docs/`.
 - Each `_category_.json` file sets a sidebar section label and description.
 - `static/img/open-science/` contains screenshots captured from a running Open Science installation.
-- `src/css/` contains the AIPOCH theme changes.
+- `src/pages/` and `src/css/` contain the localized home page and AIPOCH theme changes.
 - `i18n.config.mjs` defines the default language and every published locale.
 - `scripts/check-english.mjs` keeps the README and default source content in English.
 - `scripts/check-i18n.mjs` checks document parity and required interface translations.
