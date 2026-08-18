@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
@@ -8,6 +9,7 @@ import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const docsBaseUrl = useBaseUrl('docs/');
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -22,7 +24,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/">
+            to={docsBaseUrl}>
             <Translate id="homepage.readDocs">Read the documentation</Translate>
           </Link>
         </div>
@@ -32,6 +34,8 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+  // Resolve documentation links against the configured base URL and active locale.
+  const docsBaseUrl = useBaseUrl('docs/');
   const guides = [
     {
       id: 'getting-started',
@@ -41,7 +45,7 @@ export default function Home() {
         message:
           'Install the desktop app and configure the agent, model, notebook runtimes, and data location.',
       }),
-      to: '/docs/getting-started/installation',
+      to: `${docsBaseUrl}getting-started/installation`,
     },
     {
       id: 'workspace',
@@ -51,7 +55,7 @@ export default function Home() {
         message:
           'Work with conversations, attachments, previews, permissions, notebooks, and provenance records.',
       }),
-      to: '/docs/workspace/conversation',
+      to: `${docsBaseUrl}workspace/conversation`,
     },
     {
       id: 'settings',
@@ -60,7 +64,7 @@ export default function Home() {
         id: 'homepage.guides.settings.description',
         message: 'Configure all 13 settings panels and find any action in the control index.',
       }),
-      to: '/docs/settings/overview',
+      to: `${docsBaseUrl}settings/overview`,
     },
   ];
 
