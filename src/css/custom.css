@@ -2,7 +2,7 @@
    AIPOCH theme layer for Docusaurus
    -------------------------------------------------------------------------
    Pure UI re-skin — no content changes. Maps Infima's variables onto the
-   AIPOCH design system used by the homepage:
+   AIPOCH design system used across the documentation site:
      canvas #e8e8e8 · ink #111 · yellow #ecd44c · dark #141519 · green #4a8a72
      radius 9 / 13 / 16 / pill(99)   ·   hairline borders   ·   soft shadows
    ========================================================================= */
@@ -335,10 +335,6 @@ div[class^='codeBlockTitle'] {
 }
 .card:hover { transform: translateY(-3px); border-color: var(--aip-ink); box-shadow: var(--aip-sh); }
 
-/* landing feature icons */
-svg[class*='featureSvg'] { color: var(--aip-ink); }
-[data-theme='dark'] svg[class*='featureSvg'] { color: var(--aip-yellow); }
-
 /* ---------- footer ---------- */
 .footer { border-top: 1px solid rgba(255,255,255,.08); }
 .footer__title {
@@ -375,7 +371,7 @@ div[class^='announcementBar'] a { color: var(--aip-yellow); }
   --ifm-footer-link-color: #aaadb4;
   --ifm-footer-title-color: #ffffff;
 }
-/* code blocks: dark in both themes, matching the AIPOCH homepage */
+/* code blocks: dark in both themes, matching the AIPOCH design system */
 div[class^='codeBlockContainer'] { background: var(--aip-dark-3); }
 div[class^='codeBlockContainer'] pre,
 div[class^='codeBlockContent'],
