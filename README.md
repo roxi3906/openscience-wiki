@@ -39,6 +39,19 @@ npm run build
 npm run serve
 ```
 
+## Run the production container
+
+Build and start the Nginx runtime with Docker Compose:
+
+```bash
+docker compose up --build -d
+```
+
+The generated sitemap is available as an XML API at
+`http://localhost:3002/sitemap`. Set `PORT` to publish the container on a
+different host port. The repository-managed Nginx configuration serves this
+endpoint directly without a redirect.
+
 ## Edit documentation
 
 Add or update a Markdown file under `docs/`, then set its `sidebar_position` in front matter. Keep sibling positions unique. Store product captures in `static/img/open-science/` and reference them with a public path:
