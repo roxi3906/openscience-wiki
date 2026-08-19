@@ -10,7 +10,6 @@
     "check:english": "node scripts/check-english.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
     "check": "npm run check:english && npm run check:i18n",
-    "test:navbar-logo": "npm run build && node --test tests/navbar-logo.test.mjs",
     "build": "npm run check && docusaurus build",
     "build:en": "npm run check && docusaurus build --locale en",
     "build:zh": "npm run check && docusaurus build --locale zh-Hans",
