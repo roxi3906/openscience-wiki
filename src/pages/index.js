@@ -22,7 +22,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/">
+            to="intro">
             <Translate id="homepage.readDocs">Read the documentation</Translate>
           </Link>
         </div>
@@ -41,7 +41,7 @@ export default function Home() {
         message:
           'Install the desktop app and configure the agent, model, notebook runtimes, and data location.',
       }),
-      to: '/docs/getting-started/installation',
+      to: 'getting-started/installation',
     },
     {
       id: 'workspace',
@@ -51,7 +51,7 @@ export default function Home() {
         message:
           'Work with conversations, attachments, previews, permissions, notebooks, and provenance records.',
       }),
-      to: '/docs/workspace/conversation',
+      to: 'workspace/conversation',
     },
     {
       id: 'settings',
@@ -60,7 +60,7 @@ export default function Home() {
         id: 'homepage.guides.settings.description',
         message: 'Configure all 13 settings panels and find any action in the control index.',
       }),
-      to: '/docs/settings/overview',
+      to: 'settings/overview',
     },
   ];
 

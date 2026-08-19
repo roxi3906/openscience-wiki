@@ -28,7 +28,7 @@ const config = {
   url: 'https://aipoch.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -51,6 +51,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
         },
         blog: false,
@@ -83,9 +84,9 @@ const config = {
             position: 'left',
             label: 'Open Science Docs',
           },
-          {to: '/docs/getting-started/installation', label: 'Install', position: 'left'},
+          {to: 'getting-started/installation', label: 'Install', position: 'left'},
           {
-            to: '/docs/reference/troubleshooting',
+            to: 'reference/troubleshooting',
             label: 'Troubleshooting',
             position: 'left',
           },
@@ -108,11 +109,11 @@ const config = {
             items: [
               {
                 label: 'Open Science',
-                to: '/docs/',
+                to: '/',
               },
               {
                 label: 'Control index',
-                to: '/docs/reference/control-index',
+                to: 'reference/control-index',
               },
             ],
           },
